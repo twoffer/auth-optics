@@ -836,7 +836,7 @@ export enum ClientAuthMethod {
 }
 ```
 
-### 4.5 Device Authorization Flow Types
+### 5.5 Device Authorization Flow Types
 
 **File: `src/flows/device-authorization.ts`**
 
@@ -899,7 +899,7 @@ export type DeviceAuthorizationError =
   | 'expired_token';
 ```
 
-### 4.6 Refresh Token Flow Types
+### 5.6 Refresh Token Flow Types
 
 **File: `src/flows/refresh-token.ts`**
 
@@ -947,9 +947,9 @@ export interface RefreshTokenMetadata {
 
 ---
 
-## 5. Token Types
+## 6. Token Types
 
-### 5.1 Access Token Types
+### 6.1 Access Token Types
 
 **File: `src/tokens/access-token.ts`**
 
@@ -1068,7 +1068,7 @@ export interface AuthorizationDetail {
 }
 ```
 
-### 5.2 Refresh Token Types
+### 6.2 Refresh Token Types
 
 **File: `src/tokens/refresh-token.ts`**
 
@@ -1138,7 +1138,7 @@ export interface RefreshTokenPayload {
 }
 ```
 
-### 5.3 ID Token Types (OIDC)
+### 6.3 ID Token Types (OIDC)
 
 **File: `src/tokens/id-token.ts`**
 
@@ -1305,7 +1305,7 @@ export interface IDTokenMetadata {
 }
 ```
 
-### 5.4 JWT Generic Types
+### 6.4 JWT Generic Types
 
 **File: `src/tokens/jwt.ts`**
 
@@ -1460,7 +1460,7 @@ export interface JsonWebKey {
 }
 ```
 
-### 5.5 Token Response Types
+### 6.5 Token Response Types
 
 **File: `src/tokens/token-response.ts`**
 
@@ -1582,9 +1582,9 @@ export interface TokenRevocationRequest {
 
 ---
 
-## 6. HTTP Communication Types
+## 7. HTTP Communication Types
 
-### 6.1 HTTP Request Types
+### 7.1 HTTP Request Types
 
 **File: `src/http/request.ts`**
 
@@ -1680,7 +1680,7 @@ export interface BinaryBody {
 }
 ```
 
-### 6.2 HTTP Response Types
+### 7.2 HTTP Response Types
 
 **File: `src/http/response.ts`**
 
@@ -1780,7 +1780,7 @@ export function getStatusCategory(statusCode: number): HttpStatusCategory {
 }
 ```
 
-### 6.3 HTTP Headers Types
+### 7.3 HTTP Headers Types
 
 **File: `src/http/headers.ts`**
 
@@ -1839,9 +1839,9 @@ export const ContentTypes = {
 
 ---
 
-## 7. Security Types
+## 8. Security Types
 
-### 7.1 PKCE Types
+### 8.1 PKCE Types
 
 **File: `src/security/pkce.ts`**
 
@@ -1887,7 +1887,7 @@ export interface PKCEValidationResult {
 }
 ```
 
-### 7.2 State Parameter Types
+### 8.2 State Parameter Types
 
 **File: `src/security/state.ts`**
 
@@ -1936,7 +1936,7 @@ export interface StateValidationResult {
 }
 ```
 
-### 7.3 Nonce Types (OIDC)
+### 8.3 Nonce Types (OIDC)
 
 **File: `src/security/nonce.ts`**
 
@@ -1985,7 +1985,7 @@ export interface NonceValidationResult {
 }
 ```
 
-### 7.4 Security Assessment Types
+### 8.4 Security Assessment Types
 
 **File: `src/security/security-assessment.ts`**
 
@@ -2117,7 +2117,7 @@ export interface SecurityWarning {
 }
 ```
 
-### 7.5 Security Indicators
+### 8.5 Security Indicators
 
 **File: `src/security/security-indicators.ts`**
 
@@ -2193,7 +2193,7 @@ export enum SecurityIndicatorVariant {
 }
 ```
 
-### 7.6 Token Binding Types
+### 8.6 Token Binding Types
 
 **File: `src/security/token-binding.ts`**
 
@@ -2257,9 +2257,9 @@ export interface DPoPProof {
 
 ---
 
-## 8. Vulnerability Mode Types
+## 9. Vulnerability Mode Types
 
-### 8.1 Vulnerability Configuration
+### 9.1 Vulnerability Configuration
 
 **File: `src/vulnerability/vulnerability-config.ts`**
 
@@ -2509,7 +2509,7 @@ export const SECURE_DEFAULTS: VulnerabilityConfig = {
 };
 ```
 
-### 8.2 Vulnerability Toggle Metadata
+### 9.2 Vulnerability Toggle Metadata
 
 **File: `src/vulnerability/vulnerability-toggle.ts`**
 
@@ -2564,7 +2564,7 @@ export interface VulnerabilityToggleState extends VulnerabilityToggleMetadata {
 }
 ```
 
-### 8.3 Vulnerability Categories
+### 9.3 Vulnerability Categories
 
 **File: `src/vulnerability/vulnerability-category.ts`**
 
@@ -2621,9 +2621,9 @@ export interface VulnerabilityCategoryInfo {
 
 ---
 
-## 9. Configuration Types
+## 10. Configuration Types
 
-### 9.1 Client Configuration
+### 10.1 Client Configuration
 
 **File: `src/config/client-config.ts`**
 
@@ -2729,7 +2729,7 @@ export type TokenEndpointAuthMethod =
   | 'self_signed_tls_client_auth';
 ```
 
-### 9.2 Server Configuration
+### 10.2 Server Configuration
 
 **File: `src/config/server-config.ts`**
 
@@ -2856,7 +2856,7 @@ export interface OAuthServerMetadata {
 }
 ```
 
-### 9.3 Application Configuration
+### 10.3 Application Configuration
 
 **File: `src/config/app-config.ts`**
 
@@ -2982,9 +2982,9 @@ export interface FeatureFlags {
 
 ---
 
-## 10. Discovery & Metadata Types
+## 11. Discovery & Metadata Types
 
-### 10.1 OIDC Discovery
+### 11.1 OIDC Discovery
 
 **File: `src/discovery/oidc-discovery.ts`**
 
@@ -3115,7 +3115,7 @@ export interface OIDCDiscoveryDocument extends OAuthServerMetadata {
 }
 ```
 
-### 10.2 JWKS Types
+### 11.2 JWKS Types
 
 **File: `src/discovery/jwks.ts`**
 
@@ -3162,9 +3162,9 @@ export interface KeyLookupResult {
 
 ---
 
-## 11. UI State Types
+## 12. UI State Types
 
-### 11.1 UI State Management
+### 12.1 UI State Management
 
 **File: `src/ui/ui-state.ts`**
 
@@ -3353,7 +3353,7 @@ export interface LoadingState {
 }
 ```
 
-### 11.2 Theme Types
+### 12.2 Theme Types
 
 **File: `src/ui/theme.ts`**
 
@@ -3488,9 +3488,9 @@ export interface Shadows {
 
 ---
 
-## 12. Validation & Error Types
+## 13. Validation & Error Types
 
-### 12.1 Validation Result Types
+### 13.1 Validation Result Types
 
 **File: `src/validation/validation-result.ts`**
 
@@ -3558,7 +3558,7 @@ export interface TokenValidationResult extends ValidationResult {
 }
 ```
 
-### 12.2 Error Types
+### 13.2 Error Types
 
 **File: `src/validation/validation-error.ts`**
 
@@ -3652,9 +3652,9 @@ export enum ErrorType {
 
 ---
 
-## 13. Utility Types
+## 14. Utility Types
 
-### 13.1 Common Utility Types
+### 14.1 Common Utility Types
 
 **File: `src/utils/common.ts`**
 
@@ -3729,7 +3729,7 @@ export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
 ```
 
-### 13.2 Branded Types
+### 14.2 Branded Types
 
 **File: `src/utils/branded-types.ts`**
 
@@ -3789,9 +3789,9 @@ export function unbrand<K, T>(value: Brand<K, T>): K {
 
 ---
 
-## 14. Implementation Tasks
+## 15. Implementation Tasks
 
-### 14.1 MVP Implementation Checklist
+### 15.1 MVP Implementation Checklist
 
 **CRITICAL: Focus on MVP features only. Phase 2/3 types are defined but not fully implemented.**
 
@@ -3924,7 +3924,7 @@ export function unbrand<K, T>(value: Brand<K, T>): K {
 - [ ] Test integration with backend package
 - [ ] Test integration with frontend package
 
-### 14.2 MVP Task Estimates (Revised)
+### 15.2 MVP Task Estimates (Revised)
 
 | Phase | Estimated Hours | Priority | MVP Status |
 |-------|-----------------|----------|------------|
@@ -3952,7 +3952,7 @@ export function unbrand<K, T>(value: Brand<K, T>): K {
 - Comparison & export UI types: 1-2 hours
 - **Total Phase 2/3:** 14-22 hours
 
-### 14.3 Implementation Order (MVP Priority)
+### 15.3 Implementation Order (MVP Priority)
 
 **CRITICAL PATH (Must complete for MVP):**
 1. ✅ Core infrastructure setup
@@ -3979,9 +3979,9 @@ export function unbrand<K, T>(value: Brand<K, T>): K {
 
 ---
 
-## 15. Testing Strategy
+## 16. Testing Strategy
 
-### 15.1 Type Testing
+### 16.1 Type Testing
 
 **Goal**: Ensure types are correctly defined and provide expected compile-time guarantees
 
@@ -4040,7 +4040,7 @@ function handleFlowStatus(flow: FlowExecution) {
 }
 ```
 
-### 15.2 Integration Testing
+### 16.2 Integration Testing
 
 **Goal**: Verify types work correctly when used across packages
 
@@ -4050,7 +4050,7 @@ function handleFlowStatus(flow: FlowExecution) {
 - Verify IntelliSense works correctly
 - Test type narrowing and inference
 
-### 15.3 Documentation Testing
+### 16.3 Documentation Testing
 
 **Goal**: Ensure JSDoc comments are present and accurate
 
@@ -4061,9 +4061,9 @@ function handleFlowStatus(flow: FlowExecution) {
 
 ---
 
-## 16. Future Extensions
+## 17. Future Extensions
 
-### 16.1 Extended Flow Types
+### 17.1 Extended Flow Types
 
 **Future Work: Additional OAuth2 flows**
 
@@ -4073,7 +4073,7 @@ function handleFlowStatus(flow: FlowExecution) {
 - JWT Bearer assertions (RFC 7523)
 - SAML Bearer assertions (RFC 7522)
 
-### 16.2 Advanced OIDC Features
+### 17.2 Advanced OIDC Features
 
 **Future Work: Extended OIDC support**
 
@@ -4085,7 +4085,7 @@ function handleFlowStatus(flow: FlowExecution) {
 - Front-channel logout types
 - Back-channel logout types (OIDC Back-Channel Logout)
 
-### 16.3 Advanced Security Features
+### 17.3 Advanced Security Features
 
 **Future Work: Additional security mechanisms**
 
@@ -4096,7 +4096,7 @@ function handleFlowStatus(flow: FlowExecution) {
 - Step-up authentication
 - Transaction authorization
 
-### 16.4 Extended Vulnerability Modes
+### 17.4 Extended Vulnerability Modes
 
 **Future Work: Additional vulnerability toggles**
 
@@ -4106,7 +4106,7 @@ function handleFlowStatus(flow: FlowExecution) {
 - Token substitution attacks
 - OAuth 1.0 vulnerabilities (if supporting OAuth 1.0)
 
-### 16.5 Visualization Enhancements
+### 17.5 Visualization Enhancements
 
 **Future Work: Advanced visualization types**
 
@@ -4116,7 +4116,7 @@ function handleFlowStatus(flow: FlowExecution) {
 - Comparison view types (detailed)
 - Interactive tutorial types
 
-### 16.6 External IdP Support
+### 17.6 External IdP Support
 
 **Future Work: Multi-IdP types**
 
