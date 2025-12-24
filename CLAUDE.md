@@ -99,7 +99,11 @@ auth-optics/
 │   └── test-keycloak.sh
 ├── docs/
 │   ├── reference/         # OAuth2/OIDC specs
-│   └── specs/             # Implementation specs
+│   ├── specs/             # Implementation specs
+│   ├── context/           # Shared context for subagent coordination
+│   ├── implementation-plans/  # Technical architecture plans
+│   ├── reviews/           # Code and security reviews
+│   └── test-reports/      # Test results and coverage reports
 ├── .env.example
 ├── pnpm-workspace.yaml
 ├── CLAUDE.md              # This file
@@ -314,6 +318,83 @@ git worktree remove ../auth-optics-feature
 - Port numbers (3000 frontend, 3001 backend, 3002 mock, 8080 KeyCloak)
 - MVP scope (no feature creep beyond Authorization Code + PKCE)
 - Dependency choices (React, Express, jose, Vite, etc.)
+
+## Subagent Coordination & Output Locations
+
+When multiple Claude Code subagents work in parallel or tandem on this project, they must maintain shared context and write outputs to standardized locations for seamless coordination.
+
+### Standard Output Locations
+
+All subagents performing development tasks MUST write outputs to these directories:
+
+| Output Type | Location | Purpose | Naming Convention |
+|-------------|----------|---------|-------------------|
+| **Implementation Plans** | `@docs/implementation-plans/` | Technical architecture plans from technical-architect agent | `plan-[component]-[date].md` |
+| **Code Reviews** | `@docs/reviews/` | Security and quality reviews from code-security-reviewer agent | `review-[component]-[date].md` |
+| **Test Reports** | `@docs/test-reports/` | Test results and coverage reports from test-suite-generator or integration-validator agent | `test-[component]-[date].md` or `test-integration-[components]-[date].md` |
+| **Current Context** | `@docs/context/` | Shared state for cross-agent coordination | See Context Files below |
+
+### Context Files (Always Current)
+
+The `@docs/context/` directory contains living documents that subagents MUST update when relevant. These files use **links** to other documents rather than duplicating content.
+
+#### Required Context Files
+
+| File | Purpose | Updated By |
+|------|---------|------------|
+| **`@docs/context/current-phase.md`** | Tracks active phase, component progress, recently completed work, and next steps | technical-architect, feature-implementer |
+| **`@docs/context/pending-issues.md`** | Tracks issues by priority with links to reviews/tests that flagged them | code-security-reviewer, integration-validator |
+| **`@docs/context/integration-checklist.md`** | Tracks pending, completed, and blocked integration tests | technical-architect, integration-validator |
+
+**See**: `@docs/context/README.md` for detailed format guidelines and best practices.
+
+### Subagent Responsibilities
+
+**All subagents performing development tasks MUST:**
+
+1. **Read context on startup**: Check `@docs/context/` files to understand current state
+2. **Write outputs to standard locations**: Use the directories specified above
+3. **Update context files**: Keep current-phase.md, pending-issues.md, integration-checklist.md current
+4. **Use links, not duplication**: Reference other documents instead of copying content
+5. **Update ROADMAP.md progress**: Mark tasks complete in the roadmap when finishing work
+
+### Agent-Specific Output Requirements
+
+| Agent Type | Primary Output Location | Context Updates Required |
+|------------|------------------------|--------------------------|
+| **technical-architect** | `@docs/implementation-plans/` | Update current-phase.md, integration-checklist.md |
+| **feature-implementer** | Code files + inline docs | Update current-phase.md when completing components |
+| **code-security-reviewer** | `@docs/reviews/` | Update pending-issues.md with flagged issues and after reviewing fixed issues |
+| **test-suite-generator** | `@docs/test-reports/` + test code | Update integration-checklist.md for integration tests |
+| **integration-validator** | `@docs/test-reports/` | Update integration-checklist.md, pending-issues.md if failures |
+
+### Example Workflow: Multiple Agents
+
+**Scenario**: Implementing backend OAuth2 client service
+
+1. **technical-architect** writes plan to `@docs/implementation-plans/plan-backend-oauth2-client-2025-12-24.md`
+2. **technical-architect** updates `@docs/context/current-phase.md` with "Starting backend OAuth2 client implementation"
+3. **feature-implementer** reads context, implements code
+4. **feature-implementer** updates `@docs/context/current-phase.md` with progress
+5. **code-security-reviewer** reviews code, writes to `@docs/reviews/review-backend-oauth2-client-2025-12-24.md`
+6. **code-security-reviewer** updates `@docs/context/pending-issues.md` with any security concerns
+7. **test-suite-generator** creates tests, writes results to `@docs/test-reports/test-backend-oauth2-client-2025-12-24.md`
+8. **integration-validator** tests integration with KeyCloak, updates `@docs/context/integration-checklist.md`
+
+### Context File Guidelines
+
+**DO:**
+- ✅ Link to detailed documents: `See @docs/reviews/review-name.md Section 3`
+- ✅ Keep summaries brief (1-2 sentences per item)
+- ✅ Update timestamps when modifying files
+- ✅ Mark issues resolved when fixed
+- ✅ Cross-reference related context files
+
+**DON'T:**
+- ❌ Copy full issue descriptions from reviews
+- ❌ Duplicate roadmap content
+- ❌ Leave stale entries (remove or mark resolved)
+- ❌ Create new context file types without documenting here
 
 ## File Modification Quick Reference
 
