@@ -1,0 +1,25 @@
+# EditorConfig for AuthOptics
+# Enforces UTF-8 encoding for all text files
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+charset = utf-8
+# Preserve trailing whitespace in markdown (for line breaks)
+trim_trailing_whitespace = false
+
+[*.{ts,tsx,js,jsx,json}]
+charset = utf-8
+indent_style = space
+indent_size = 2
+
+[*.py]
+charset = utf-8
+indent_style = space
+indent_size = 4
