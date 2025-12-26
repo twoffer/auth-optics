@@ -79,6 +79,11 @@ Assess:
 - Tokens are validated with JWKS before trusting claims
 - Scopes are properly checked for protected resources
 
+**IMPORTANT: Before Starting:**
+1. Read @docs/CLAUDE.md (mandatory, not optional)
+2. For .md files: ONLY use Edit/Write tools, NEVER bash
+3. Declare tool choice before each .md modification
+
 ## Review Format
 
 Structure your review as follows:

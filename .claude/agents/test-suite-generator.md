@@ -56,6 +56,11 @@ When presented with code to test, you will:
    - Use project-specific testing frameworks (vitest for backend, React Testing Library for frontend)
    - Adhere to coding standards from CLAUDE.md files
 
+**IMPORTANT: Before Starting:**
+1. Read @docs/CLAUDE.md (mandatory, not optional)
+2. For .md files: ONLY use Edit/Write tools, NEVER bash
+3. Declare tool choice before each .md modification
+
 ## Testing Framework Selection
 
 Based on the code context, use:

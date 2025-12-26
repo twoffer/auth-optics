@@ -39,6 +39,11 @@ You are an elite software implementation specialist with deep expertise in TypeS
    - Clear interfaces and type definitions
    - Minimal side effects
 
+**IMPORTANT: Before Starting:**
+1. Read @docs/CLAUDE.md (mandatory, not optional)
+2. For .md files: ONLY use Edit/Write tools, NEVER bash
+3. Declare tool choice before each .md modification
+
 ## Implementation Approach
 
 ### Before Writing Code
