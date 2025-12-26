@@ -330,6 +330,7 @@ All subagents performing development tasks MUST write outputs to these directori
 | Output Type | Location | Purpose | Naming Convention |
 |-------------|----------|---------|-------------------|
 | **Implementation Plans** | `@docs/implementation-plans/` | Technical architecture plans from technical-architect agent | `plan-[component]-[date].md` |
+| **Detailed Implementation Plans** | `@docs/implementation-plans/[agent-type]/` | Agent-specific detailed plans (subsections, step-by-step) | `[descriptive-name].md` |
 | **Code Reviews** | `@docs/reviews/` | Security and quality reviews from code-security-reviewer agent | `review-[component]-[date].md` |
 | **Test Reports** | `@docs/test-reports/` | Test results and coverage reports from test-suite-generator or integration-validator agent | `test-[component]-[date].md` or `test-integration-[components]-[date].md` |
 | **Current Context** | `@docs/context/` | Shared state for cross-agent coordination | See Context Files below |
@@ -363,7 +364,7 @@ The `@docs/context/` directory contains living documents that subagents MUST upd
 | Agent Type | Primary Output Location | Context Updates Required |
 |------------|------------------------|--------------------------|
 | **technical-architect** | `@docs/implementation-plans/` | Update current-phase.md, integration-checklist.md |
-| **feature-implementer** | Code files + inline docs | Update current-phase.md when completing components |
+| **feature-implementer** | Code files + inline docs; detailed plans to `@docs/implementation-plans/feature-implementer/` | Update current-phase.md when completing components |
 | **code-security-reviewer** | `@docs/reviews/` | Update pending-issues.md with flagged issues and after reviewing fixed issues |
 | **test-suite-generator** | `@docs/test-reports/` + test code | Update integration-checklist.md for integration tests |
 | **integration-validator** | `@docs/test-reports/` | Update integration-checklist.md, pending-issues.md if failures |
