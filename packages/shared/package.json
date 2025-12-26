@@ -1,0 +1,28 @@
+{
+  "name": "@auth-optics/shared",
+  "version": "1.0.0",
+  "description": "Shared TypeScript types for AuthOptics",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "watch": "tsc --watch"
+  },
+  "keywords": [
+    "oauth2",
+    "oidc",
+    "types",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  },
+  "files": [
+    "dist/**/*",
+    "src/**/*"
+  ]
+}

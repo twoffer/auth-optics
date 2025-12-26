@@ -8,12 +8,21 @@ Implementation plans provide detailed technical design and implementation strate
 
 ## Naming Convention
 
-`plan-[component]-[date].md`
+**High-level plans (technical-architect)**: `plan-[component]-[date].md`
 
 **Examples**:
 - `plan-backend-oauth2-client-2025-12-24.md`
 - `plan-frontend-flow-visualization-2025-12-25.md`
 - `plan-integration-backend-keycloak-2025-12-26.md`
+
+**Detailed plans (other agents)**: `[agent-type]/[descriptive-name].md`
+
+**Examples**:
+- `feature-implementer/shared-types-package-sections-1-to-3.md`
+- `feature-implementer/backend-oauth2-client-step-by-step.md`
+- `test-suite-generator/backend-services-test-plan.md`
+
+**When to create detailed plans**: Agents should create their own detailed implementation plans in their subdirectory when breaking down a high-level plan into specific steps or when creating step-by-step guides for complex subsections.
 
 ## Contents
 
