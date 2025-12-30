@@ -11,33 +11,33 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run ./scripts/generate-agent-prompts.sh
 
-Generated: 2025-12-30 17:46:43 UTC
-Component: "Shared Types package initialization"
+Generated: 2025-12-30 20:37:26 UTC
+Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -->
 
 @agent-test-suite-generator
 
-## Task: Test the implementation of "Shared Types package initialization"
+## Task: Test the implementation of "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
-**Detailed Plan:** "@docs/implementation-plans/feature-implementer/shared-types-package-sections-1-to-3.md"
-**GitHub PR:** "#7"
-**Git Branch:** "feature/shared-types-init"
+**Detailed Plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+**GitHub PR:** "#X"
+**Git Branch:** "feature/XYZ"
 
 ### Requirements
-- Run tests to validate the functionality in GitHub PR "#7" (branch "feature/shared-types-init") according to the following:
+- Run tests to validate the functionality in GitHub PR "#X" (branch "feature/XYZ") according to the following:
   * The Test Plan in the PR
-  * The verification checklist in "@docs/implementation-plans/feature-implementer/shared-types-package-sections-1-to-3.md"
+  * The verification checklist in "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
   * Any other criteria that is relevant to these changes
 - Write test code if `write_test_code: true` and run it
 - Always use the reference specification documents and the official OAuth2/OIDC RFCs/specs to determine what the expected behavior should be
 
 ### Context Loading (See @docs/context/agent-coordination.md)
 **Always Load:**
-- Detailed implementation plan: "@docs/implementation-plans/feature-implementer/shared-types-package-sections-1-to-3.md"
+- Detailed implementation plan: "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
 - Component specification: "@docs/specs/auth-optics-shared-types-specification.md"
-- GitHub PR diff (if available): "#7"
+- GitHub PR diff (if available): "#X"
 
 **DO NOT Load:**
 - Implementation plans (only use verification checklists)
@@ -67,7 +67,7 @@ Component: "Shared Types package initialization"
 - Change test requirements (follow spec)
 
 ### Documentation Requirements
-- Write test results to "@docs/test-reports/test-shared-types-package-sections-1-to-3.md"
+- Write test results to "@docs/test-reports/test-shared-types-day-1-foundation.md"
 - Create the test results document according to the guidelines in @docs/test-reports/README.md
 
 ### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
@@ -87,7 +87,7 @@ Component: "Shared Types package initialization"
       ✓ Test failures added to pending-issues.md
       ✓ Issues categorized by priority
 - [ ] All documents updated
-      ✓ Test report exists at "@docs/test-reports/test-shared-types-package-sections-1-to-3.md"
+      ✓ Test report exists at "@docs/test-reports/test-shared-types-day-1-foundation.md"
 - [ ] All project tracking updated
       ✓ pending-issues.md updated (if failures)
 - [ ] Ready for next phase
@@ -100,7 +100,7 @@ Component: "Shared Types package initialization"
 ✅ AGENT COMPLETE: test-suite-generator
 
 📁 Artifacts Created:
-   - "@docs/test-reports/test-shared-types-package-sections-1-to-3.md"
+   - "@docs/test-reports/test-shared-types-day-1-foundation.md"
    - Test code in packages/"types"/__tests__/ (if applicable)
 
 📋 Context Updates:
@@ -118,11 +118,11 @@ Component: "Shared Types package initialization"
 
 ### References
 - **Coordination guide:** @docs/context/agent-coordination.md (read first!)
-- **Detailed plan:** "@docs/implementation-plans/feature-implementer/shared-types-package-sections-1-to-3.md"
+- **Detailed plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
 - **Component specification:** "@docs/specs/auth-optics-shared-types-specification.md"
 - **Architecture:** @docs/specs/auth-optics-architecture.md
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)
 - **Project roadmap:** @ROADMAP.md
 - **Current context:** @docs/context/current-phase.md
-- **GitHub PR:** "#7"
-- **Related GitHub Issue:** "#6"
+- **GitHub PR:** "#X"
+- **Related GitHub Issue:** "#Y"
