@@ -11,18 +11,18 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run ./scripts/generate-agent-prompts.sh
 
-Generated: 2025-12-30 17:46:43 UTC
-Component: "Shared Types package initialization"
+Generated: 2025-12-30 20:37:26 UTC
+Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -->
 
 @agent-feature-implementer
 
-## Task: Create a detailed implementation plan for "Shared Types package initialization"
+## Task: Create a detailed implementation plan for "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ### Requirements
-- Create a detailed, step-by-step implementation plan for "Sections 1-3" of "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md" that includes the following:
+- Create a detailed, step-by-step implementation plan for "Day 1 (Section 4.2)" of "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md" that includes the following:
   * Checklist of all the steps that you will take to achieve the goals set forth in "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md" for the particular sections identified
   * Verification checklist with accompanying scripts to confirm that you have followed the steps according to "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
 - Do NOT start writing any code yet
@@ -37,7 +37,7 @@ Component: "Shared Types package initialization"
 - Entire @docs/reference/ directory at once
 
 ### Documentation Requirements
-- Write the detailed implementation plan to "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
+- Write the detailed implementation plan to "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
 
 ### Scope Guards (See @docs/context/agent-coordination.md for details)
 **DO:**
@@ -67,7 +67,7 @@ Component: "Shared Types package initialization"
       ✓ current-phase.md updated
       ✓ "Last Updated" timestamp current
 - [ ] Ready for next phase
-      ✓ Detailed plan exists at "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
+      ✓ Detailed plan exists at "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
       ✓ No blockers for implementation
       ✓ feature-implementer has all required inputs
 
@@ -77,7 +77,7 @@ Component: "Shared Types package initialization"
 ✅ AGENT COMPLETE: feature-implementer (plan mode)
 
 📁 Artifacts Created:
-   - "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
+   - "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
 
 📋 Context Updates:
    - current-phase.md (updated: Current Phase, Next Steps)

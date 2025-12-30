@@ -11,15 +11,15 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run ./scripts/generate-agent-prompts.sh
 
-Generated: 2025-12-30 17:46:43 UTC
-Component: "Shared Types package initialization"
+Generated: 2025-12-30 20:37:26 UTC
+Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -->
 
 @agent-technical-architect
 
-## Task: Create the implementation plan for "Shared Types package initialization"
+## Task: Create the implementation plan for "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ### Requirements
 - Review the Component Specification ("@docs/specs/auth-optics-shared-types-specification.md") and create a comprehensive implementation plan that includes the following:
@@ -44,7 +44,7 @@ Component: "Shared Types package initialization"
 - Test reports or reviews
 
 ### Documentation Requirements
-- Write the implementation plan to "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
+- Write the implementation plan to "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
 - Create the implementation plan document according to the guidelines in @docs/implementation-plans/README.md
 
 ### Verification Requirements
@@ -84,7 +84,7 @@ Component: "Shared Types package initialization"
       ✓ current-phase.md updated with new plan
       ✓ "Last Updated" timestamp current
 - [ ] Ready for next phase
-      ✓ Plan document exists at "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
+      ✓ Plan document exists at "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
       ✓ No critical blockers in pending-issues.md
       ✓ Next agent (feature-implementer) has all required inputs
 
@@ -94,7 +94,7 @@ Component: "Shared Types package initialization"
 ✅ AGENT COMPLETE: technical-architect
 
 📁 Artifacts Created:
-   - "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
+   - "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
 
 📋 Context Updates:
    - current-phase.md (updated: Current Phase, Next Steps)

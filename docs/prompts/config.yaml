@@ -6,7 +6,7 @@
 # COMPONENT CONFIGURATION
 # ============================================================================
 component:
-  name: "Shared Types package initialization"
+  name: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
   type: "types"  # Options: types | backend | frontend | mock-resource-server
 
 # ============================================================================
@@ -18,20 +18,20 @@ paths:
 
   # Implementation plans
   master_plan: "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
-  detailed_plan: "@docs/implementation-plans/feature-implementer/shared-types-package-sections-1-to-3.md"
+  detailed_plan: "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
 
   # Output paths
-  output_plan: "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
-  output_review: "@docs/reviews/review-shared-types-package-sections-1-to-3.md"
-  output_test_report: "@docs/test-reports/test-shared-types-package-sections-1-to-3.md"
+  output_plan: "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+  output_review: "@docs/reviews/review-shared-types-day-1-foundation.md"
+  output_test_report: "@docs/test-reports/test-shared-types-day-1-foundation.md"
 
 # ============================================================================
 # GITHUB REFERENCES
 # ============================================================================
 github:
-  pr: "#7"
-  issue: "#6"
-  branch: "feature/shared-types-init"
+  pr: "#X"
+  issue: "#9"
+  branch: "feature/XYZ"
 
 # ============================================================================
 # CONTEXT LOADING FLAGS
@@ -70,7 +70,7 @@ testing:
 # ============================================================================
 plan_mode:
   # Which sections of master plan to create detailed plan for
-  master_plan_sections: "Sections 1-3"  # Examples: "Sections 1.4-4.2", "Day 1, Sessions 1 - 4"
+  master_plan_sections: "Day 1 (Section 4.2)"  # Examples: "Sections 1.4-4.2", "Day 1, Sessions 1 - 4"
 
 # ============================================================================
 # EXAMPLES FOR OTHER COMPONENTS
