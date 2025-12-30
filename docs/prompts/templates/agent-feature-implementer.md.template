@@ -1,0 +1,144 @@
+@agent-feature-implementer
+
+## Task: Implement the detailed plan for {{component_name}}
+
+### Requirements
+- Implement the checklist in {{detailed_plan}}
+- Consult the component specification ({{specification}}) for context and architectural direction
+- Follow the technical specification exactly
+- Use the OAuth2 RFCs and OIDC specs as the final authorities
+- When finished with all implementation and verification tasks:
+  * Create a new git branch
+  * Commit the changes
+  * Push the changes to origin
+  * Create a GitHub PR for this branch
+
+### Context Loading (See @docs/context/agent-coordination.md)
+**Always Load:**
+- Detailed implementation plan: {{detailed_plan}}
+- Component specification: {{specification}}
+- @docs/context/current-phase.md
+
+{{#if requires_oauth_context}}
+**OAuth2/OIDC Context:**
+- START HERE: @docs/reference/00-NAVIGATION-START-HERE.md (master index)
+- Use the navigation guide to find specific documents needed for your component
+- Common needs: flows/, tokens/, security/ documents (use index to locate)
+
+{{#endif requires_oauth_context}}
+{{#if requires_keycloak_context}}
+**KeyCloak Integration Context:**
+- @docs/reference/keycloak/keycloak-integration-requirements.md
+
+{{#endif requires_keycloak_context}}
+{{#if security_critical}}
+**Security-Critical Context:**
+- @docs/reference/security/oauth2-oidc-threat-model-INDEX.md (comprehensive threat index)
+- Use to understand attack vectors and required mitigations
+
+{{#endif security_critical}}
+**DO NOT Load:**
+- Deprecated flow specs unless explicitly required in plan
+- Entire @docs/reference/ directory at once
+
+### Scope Guards (See @docs/context/agent-coordination.md for details)
+**DO:**
+- Implement exactly what's in the detailed plan
+- Document implementation decisions in ROADMAP.md "Implementation Notes"
+- Mark tasks complete as you finish them
+- Update progress tracking
+
+**DO NOT:**
+- Implement features beyond the detailed plan (no scope creep)
+- Refactor code outside the component scope
+- Modify specification documents (flag discrepancies in pending-issues.md)
+- Change architectural decisions (escalate to user)
+- Skip verification steps
+
+### Verification Requirements
+- Run through the verification checklists in {{detailed_plan}} to ensure that you have implemented everything correctly
+
+### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
+
+**Update CLAUDE.md:**
+- [ ] Update "Project Status" section (PRIMARY OWNER for this)
+
+**Update ROADMAP.md:**
+- [ ] Mark completed tasks as `[x]` in the relevant phase section (PRIMARY OWNER)
+- [ ] Update component progress percentage in "Current Project Status" table (PRIMARY OWNER)
+- [ ] Update "Overall Progress" bar if significant milestone reached (PRIMARY OWNER)
+- [ ] Add any new blockers discovered to "Known Blockers" section (PRIMARY OWNER)
+- [ ] Document key decisions in "Implementation Notes" section (PRIMARY OWNER)
+
+**Update @docs/context/current-phase.md:**
+- [ ] Update "Recently Completed" with what was just finished (PRIMARY OWNER)
+- [ ] Update "Next Steps" with what should be done next (if blocked)
+- [ ] Update "Last Updated" timestamp
+
+**Update {{detailed_plan}}:**
+- [ ] Mark completed tasks as `[x]` in the relevant sections (PRIMARY OWNER)
+
+**Update @docs/context/pending-issues.md (if applicable):**
+- [ ] Add any issues discovered during implementation
+- [ ] Categorize issues by priority (Critical/High/Medium/Low)
+- [ ] Include file paths where issues were found
+
+**Update @docs/context/integration-checklist.md (if applicable):**
+- [ ] Mark integration tests as pending/complete/blocked
+- [ ] Add any new integration points discovered
+- [ ] Note any integration issues that need resolution
+
+### Exit Criteria
+- [ ] All implementation tasks complete
+      ✓ All checklist items in detailed plan marked [x]
+      ✓ Code written and committed to a new git branch
+      ✓ GitHub PR created
+- [ ] All verifications pass
+      ✓ All verification scripts executed successfully
+      ✓ Build succeeds without errors
+      ✓ No critical issues blocking merge
+- [ ] All project tracking updated
+      ✓ ROADMAP.md tasks marked complete
+      ✓ CLAUDE.md progress updated
+      ✓ current-phase.md updated
+      ✓ Detailed plan tasks marked [x]
+- [ ] Ready for next phase
+      ✓ PR exists
+      ✓ Test and review agents have all required inputs
+      ✓ No critical blockers
+
+### Completion Signal (Output when done)
+```markdown
+---
+✅ AGENT COMPLETE: feature-implementer
+
+📁 Artifacts Created:
+   - Code in packages/{{component_type}}/
+   - Git branch: [New Git branch]
+   - GitHub PR: [New GitHub PR #]
+
+📋 Context Updates:
+   - ROADMAP.md (marked tasks complete, updated progress)
+   - CLAUDE.md (updated Project Status)
+   - current-phase.md (updated Recently Completed, Next Steps)
+   - {{detailed_plan}} (marked tasks [x])
+
+🎯 Ready For: test-suite-generator AND code-security-reviewer (can run in parallel)
+
+⚠️ Blockers for Next Agent: [None / List specific blockers]
+
+📝 Notes:
+   - [Key implementation decisions]
+   - [Deviations from plan, if any]
+   - [Issues discovered during implementation]
+---
+```
+
+### References
+- **Coordination guide:** @docs/context/agent-coordination.md (read first!)
+- **Detailed plan:** {{detailed_plan}}
+- **Component specification:** {{specification}}
+- **Architecture:** @docs/specs/auth-optics-architecture.md
+- **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)
+- **Project roadmap:** @ROADMAP.md
+- **Current context:** @docs/context/current-phase.md

@@ -27,6 +27,30 @@ Context files should be **brief summaries with links** to detailed documents, no
   method needs to be updated to store the verifier in sessionStorage...
 ```
 
+## Agent Coordination
+
+**See:** [agent-coordination.md](agent-coordination.md) for detailed coordination protocols including:
+- **Template-based prompt system** (how to update prompts for new components)
+- Update ownership matrix (who updates what)
+- Context loading rules (scoped references per agent type)
+- Model recommendations (haiku/sonnet/opus)
+- Handoff protocol (completion signals)
+- Scope guards (what agents should/shouldn't do)
+- Error recovery procedures
+
+**All agents MUST consult agent-coordination.md before starting work.**
+
+### Updating Agent Prompts
+
+Agent prompts in `docs/prompts/` are **generated files**. To update them:
+
+1. Edit `docs/prompts/config.yaml` (single source of truth)
+2. Run `./scripts/generate-agent-prompts.sh`
+
+Do NOT edit the agent prompt files directly - your changes will be overwritten!
+
+---
+
 ## Required Files
 
 ### current-phase.md

@@ -1,0 +1,129 @@
+@agent-test-suite-generator
+
+## Task: Test the implementation of {{component_name}}
+
+**Detailed Plan:** {{detailed_plan}}
+**GitHub PR:** {{github_pr}}
+**Git Branch:** {{git_branch}}
+
+### Requirements
+- Run tests to validate the functionality in GitHub PR {{github_pr}} (branch {{git_branch}}) according to the following:
+  * The Test Plan in the PR
+  * The verification checklist in {{detailed_plan}}
+  * Any other criteria that is relevant to these changes
+- Write test code if `write_test_code: true` and run it
+- Always use the reference specification documents and the official OAuth2/OIDC RFCs/specs to determine what the expected behavior should be
+
+### Context Loading (See @docs/context/agent-coordination.md)
+**Always Load:**
+- Detailed implementation plan: {{detailed_plan}}
+- Component specification: {{specification}}
+- GitHub PR diff (if available): {{github_pr}}
+
+{{#if requires_oauth_context}}
+**OAuth2/OIDC Context:**
+- START HERE: @docs/reference/00-NAVIGATION-START-HERE.md (master index)
+- Use the navigation guide to find expected behavior specifications
+- Focus on validation requirements for the component being tested
+
+{{#endif requires_oauth_context}}
+{{#if security_critical}}
+**Security-Critical Context:**
+- @docs/reference/security/oauth2-oidc-threat-model-INDEX.md
+- Use to understand which attacks should be prevented by this component
+
+{{#endif security_critical}}
+**DO NOT Load:**
+- Implementation plans (only use verification checklists)
+- Entire @docs/reference/ directory at once
+
+### Test Scope Guidance
+{{#if write_test_code}}
+**Test Code Required:**
+✓ Component has logic (not just types/config)
+✓ Security-critical functionality
+✓ External integrations (KeyCloak, APIs)
+
+{{#endif write_test_code}}
+**Note:** Test code is not required for:
+- Pure type definitions
+- Configuration files only
+- Documentation updates
+
+**Test Type (from configuration):**
+- `unit`: Test individual functions/components in isolation
+- `integration`: Test component interactions
+- `e2e`: Test complete user workflows
+
+### Scope Guards (See @docs/context/agent-coordination.md for details)
+**DO:**
+- Validate against specification requirements
+- Write test code if component has logic
+- Document test failures in pending-issues.md
+- Verify security properties
+
+**DO NOT:**
+- Fix code (report issues only)
+- Modify implementation (testing only)
+- Change test requirements (follow spec)
+
+### Documentation Requirements
+- Write test results to {{output_report}}
+- Create the test results document according to the guidelines in @docs/test-reports/README.md
+
+### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
+
+**Update @docs/context/pending-issues.md (if applicable):**
+- [ ] Add any issues discovered during testing
+- [ ] Categorize by priority (Critical/High/Medium/Low)
+- [ ] Include file paths to failing test code if applicable
+- [ ] Include line numbers of failing code if known
+
+### Exit Criteria
+- [ ] All test validations executed
+      ✓ All verification checklist items tested
+      ✓ Test code written (if applicable)
+      ✓ All tests run successfully (or failures documented)
+- [ ] Any issues documented
+      ✓ Test failures added to pending-issues.md
+      ✓ Issues categorized by priority
+- [ ] All documents updated
+      ✓ Test report exists at {{output_report}}
+- [ ] All project tracking updated
+      ✓ pending-issues.md updated (if failures)
+- [ ] Ready for next phase
+      ✓ Test report complete
+      ✓ No critical test failures blocking merge
+
+### Completion Signal (Output when done)
+```markdown
+---
+✅ AGENT COMPLETE: test-suite-generator
+
+📁 Artifacts Created:
+   - {{output_report}}
+   - Test code in packages/{{component_type}}/__tests__/ (if applicable)
+
+📋 Context Updates:
+   - pending-issues.md (added [Couint of issues] issues) [if failures]
+
+🎯 Ready For: code-security-reviewer (or User Review if reviewer already ran)
+
+⚠️ Blockers for Next Agent: [None / List specific blockers]
+
+📝 Notes:
+   - Test Results: [Test pass count] passed, [Test fail count] failed
+   - [Key findings]
+---
+```
+
+### References
+- **Coordination guide:** @docs/context/agent-coordination.md (read first!)
+- **Detailed plan:** {{detailed_plan}}
+- **Component specification:** {{specification}}
+- **Architecture:** @docs/specs/auth-optics-architecture.md
+- **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)
+- **Project roadmap:** @ROADMAP.md
+- **Current context:** @docs/context/current-phase.md
+- **GitHub PR:** {{github_pr}}
+- **Related GitHub Issue:** {{github_issue}}

@@ -33,7 +33,7 @@ The documentation contains special Unicode characters (emojis, box-drawing, symb
 - File encoding requirements and rules (UTF-8 non-negotiable)
 - How to preserve special characters (emojis ✅📚, box-drawing ┌─│, symbols →←)
 - Correct vs incorrect modification approaches
-- Recovery procedures if encoding corruption occurs (fix_encoding.py script)
+- Recovery procedures if encoding corruption occurs (scripts/fix_encoding.py script)
 
 **Key Rule:** Always use the Read/Edit/Write tools for markdown files. NEVER use bash text manipulation commands (sed, awk, echo >, cat <<EOF).
 

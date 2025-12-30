@@ -1,0 +1,15 @@
+# .gitattributes
+# Configure how Git handles specific files
+
+# ============================================================================
+# Generated Files
+# ============================================================================
+# Mark agent prompts as generated so GitHub:
+# - Collapses them in diffs by default
+# - Excludes them from language statistics
+# - Shows "Generated" badge in UI
+
+docs/prompts/agent-*.md linguist-generated=true
+
+# Templates are source files (not generated)
+docs/prompts/templates/*.template linguist-generated=false
