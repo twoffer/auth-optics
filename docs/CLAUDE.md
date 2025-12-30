@@ -77,7 +77,7 @@ If you see these patterns, **STOP** - the file has encoding corruption:
 
 If encoding corruption occurs again, run:
 ```bash
-python3 fix_encoding.py docs/
+python3 scripts/fix_encoding.py docs/
 ```
 
 This script:
@@ -114,7 +114,8 @@ auth-optics/
 │   ├── frontend/                  # React + Vite frontend
 │   ├── mock-resource-server/      # OAuth2 resource server
 │   └── shared/                    # Shared TypeScript types
-└── fix_encoding.py                # UTF-8 mojibake repair script
+└── scripts/
+    └── fix_encoding.py            # UTF-8 mojibake repair script
 ```
 
 ## Common Tasks
@@ -205,7 +206,7 @@ set fileencoding=utf-8
 ## Important Notes
 
 1. **Never assume default encoding** - always specify UTF-8 explicitly
-2. **The `fix_encoding.py` script exists** - use it if corruption occurs
+2. **The `scripts/fix_encoding.py` script exists** - use it if corruption occurs
 3. **Verify after edits** - check that emojis and diagrams still render
 
 ---

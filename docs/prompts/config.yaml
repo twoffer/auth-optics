@@ -1,0 +1,107 @@
+# Agent Prompt Configuration
+# This file defines the current component being worked on.
+# Run `./scripts/generate-agent-prompts.sh` after modifying this file to regenerate prompts.
+
+# ============================================================================
+# COMPONENT CONFIGURATION
+# ============================================================================
+component:
+  name: "Shared Types package initialization"
+  type: "types"  # Options: types | backend | frontend | mock-resource-server
+
+# ============================================================================
+# FILE PATHS
+# ============================================================================
+paths:
+  # Specifications
+  specification: "@docs/specs/auth-optics-shared-types-specification.md"
+
+  # Implementation plans
+  master_plan: "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
+  detailed_plan: "@docs/implementation-plans/feature-implementer/shared-types-package-sections-1-to-3.md"
+
+  # Output paths
+  output_plan: "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
+  output_review: "@docs/reviews/review-shared-types-package-sections-1-to-3.md"
+  output_test_report: "@docs/test-reports/test-shared-types-package-sections-1-to-3.md"
+
+# ============================================================================
+# GITHUB REFERENCES
+# ============================================================================
+github:
+  pr: "#7"
+  issue: "#6"
+  branch: "feature/shared-types-init"
+
+# ============================================================================
+# CONTEXT LOADING FLAGS
+# ============================================================================
+context:
+  # Set to true if component implements OAuth2/OIDC flows
+  requires_oauth: false
+
+  # Set to true if component integrates with KeyCloak
+  requires_keycloak: false
+
+  # Set to true for auth flows, token validation, PKCE, state management
+  security_critical: false
+
+# ============================================================================
+# MODEL RECOMMENDATIONS
+# ============================================================================
+models:
+  technical_architect: "sonnet"      # Architecture decisions require complex reasoning
+  feature_implementer_plan: "haiku"  # Creating checklists is straightforward
+  feature_implementer: "sonnet"      # Code writing requires understanding specs
+  test_suite_generator: "haiku"      # Test execution is mostly mechanical
+  code_security_reviewer: "sonnet"   # Security analysis requires deep understanding
+
+# ============================================================================
+# TESTING CONFIGURATION
+# ============================================================================
+testing:
+  type: "unit"  # Options: unit | integration | e2e
+
+  # Set to true if component has logic (not just types/config)
+  write_test_code: false
+
+# ============================================================================
+# PLAN MODE CONFIGURATION
+# ============================================================================
+plan_mode:
+  # Which sections of master plan to create detailed plan for
+  master_plan_sections: "Sections 1-3"  # Examples: "Sections 1.4-4.2", "Day 1, Sessions 1 - 4"
+
+# ============================================================================
+# EXAMPLES FOR OTHER COMPONENTS
+# ============================================================================
+# Uncomment and modify when starting Backend component:
+#
+# component:
+#   name: "Backend OAuth2 Client"
+#   type: "backend"
+#
+# paths:
+#   specification: "@docs/specs/auth-optics-backend-specification.md"
+#   master_plan: "@docs/implementation-plans/plan-backend-oauth2-2025-12-29.md"
+#   detailed_plan: "@docs/implementation-plans/feature-implementer/backend-oauth2-detailed.md"
+#   output_plan: "@docs/implementation-plans/plan-backend-oauth2-2025-12-29.md"
+#   output_review: "@docs/reviews/review-backend-oauth2-2025-12-29.md"
+#   output_test_report: "@docs/test-reports/test-backend-oauth2-2025-12-29.md"
+#
+# github:
+#   pr: "#X"
+#   issue: "#Y"
+#   branch: "feature/backend-oauth2"
+#
+# context:
+#   requires_oauth: true
+#   requires_keycloak: true
+#   security_critical: true
+#
+# testing:
+#   type: "integration"
+#   write_test_code: true
+#
+# plan_mode:
+#   master_plan_sections: "1-5"
