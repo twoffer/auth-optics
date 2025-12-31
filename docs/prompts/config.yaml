@@ -29,9 +29,9 @@ paths:
 # GITHUB REFERENCES
 # ============================================================================
 github:
-  pr: "#X"
+  pr: "#11"
   issue: "#9"
-  branch: "feature/XYZ"
+  branch: "feature/shared-types-day-1-foundation"
 
 # ============================================================================
 # CONTEXT LOADING FLAGS
@@ -55,15 +55,6 @@ models:
   feature_implementer: "sonnet"      # Code writing requires understanding specs
   test_suite_generator: "haiku"      # Test execution is mostly mechanical
   code_security_reviewer: "sonnet"   # Security analysis requires deep understanding
-
-# ============================================================================
-# TESTING CONFIGURATION
-# ============================================================================
-testing:
-  type: "unit"  # Options: unit | integration | e2e
-
-  # Set to true if component has logic (not just types/config)
-  write_test_code: false
 
 # ============================================================================
 # PLAN MODE CONFIGURATION
@@ -98,10 +89,6 @@ plan_mode:
 #   requires_oauth: true
 #   requires_keycloak: true
 #   security_critical: true
-#
-# testing:
-#   type: "integration"
-#   write_test_code: true
 #
 # plan_mode:
 #   master_plan_sections: "1-5"

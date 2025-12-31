@@ -1,0 +1,424 @@
+/**
+ * Type Guard Tests - NOT YET IMPLEMENTED
+ *
+ * Priority: MEDIUM
+ *
+ * This file documents the expected behavior of type guard functions
+ * that do not yet exist in the codebase. These guards are required
+ * for production-ready validation.
+ *
+ * Status: SKIPPED (awaiting implementation)
+ * Tracked in: @docs/context/pending-issues.md
+ * Requires: feature-implementer agent
+ *
+ * Framework: Vitest
+ */
+
+import { describe, it, expect } from 'vitest';
+
+// Type guards that need to be implemented:
+// import { isValidJWT, isValidAccessToken, isValidFlowExecution, isValidFlowStep } from '@/utils/type-guards';
+
+describe.skip('Type Guards - NOT YET IMPLEMENTED', () => {
+  describe('isValidJWT()', () => {
+    describe('Valid JWT Detection', () => {
+      it('should return true for valid JWT structure (header.payload.signature)', () => {
+        const validJWT = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYXVkIjoiY2xpZW50LWlkIn0.signature';
+
+        // Expected behavior when implemented:
+        // expect(isValidJWT(validJWT)).toBe(true);
+      });
+
+      it('should return true for JWT with valid base64url encoding', () => {
+        const validBase64JWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U';
+
+        // Expected behavior:
+        // expect(isValidJWT(validBase64JWT)).toBe(true);
+      });
+
+      it('should return true for JWT without padding', () => {
+        const noPaddingJWT = 'eyJhbGciOiJub25lIn0.e30.';
+
+        // Expected behavior:
+        // expect(isValidJWT(noPaddingJWT)).toBe(true);
+      });
+    });
+
+    describe('Invalid JWT Detection', () => {
+      it('should return false for string without two dots', () => {
+        const noDots = 'notajwttoken';
+
+        // Expected behavior:
+        // expect(isValidJWT(noDots)).toBe(false);
+      });
+
+      it('should return false for string with only one dot', () => {
+        const oneDot = 'header.payload';
+
+        // Expected behavior:
+        // expect(isValidJWT(oneDot)).toBe(false);
+      });
+
+      it('should return false for empty string', () => {
+        // Expected behavior:
+        // expect(isValidJWT('')).toBe(false);
+      });
+
+      it('should return false for string with three or more dots', () => {
+        const threeDots = 'part1.part2.part3.part4';
+
+        // Expected behavior:
+        // expect(isValidJWT(threeDots)).toBe(false);
+      });
+
+      it('should return false for JWT with empty header', () => {
+        const emptyHeader = '.eyJzdWIiOiIxMjM0NTY3ODkwIn0.signature';
+
+        // Expected behavior:
+        // expect(isValidJWT(emptyHeader)).toBe(false);
+      });
+
+      it('should return false for JWT with empty payload', () => {
+        const emptyPayload = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..signature';
+
+        // Expected behavior:
+        // expect(isValidJWT(emptyPayload)).toBe(false);
+      });
+
+      it('should return false for JWT with invalid base64url characters', () => {
+        const invalidChars = 'header+with+plus.payload/with/slash.signature=with=padding';
+
+        // Expected behavior:
+        // expect(isValidJWT(invalidChars)).toBe(false);
+      });
+
+      it('should return false for null', () => {
+        // Expected behavior:
+        // expect(isValidJWT(null as any)).toBe(false);
+      });
+
+      it('should return false for undefined', () => {
+        // Expected behavior:
+        // expect(isValidJWT(undefined as any)).toBe(false);
+      });
+    });
+  });
+
+  describe('isValidAccessToken()', () => {
+    describe('Valid Access Token Detection', () => {
+      it('should return true for JWT access token', () => {
+        const jwtToken = {
+          token: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyLTEyMyIsImlzcyI6Imh0dHBzOi8vYXV0aC5leGFtcGxlLmNvbSIsImF1ZCI6IndlYi1hcHAiLCJleHAiOjE3MDQwMDk2MDAsImlhdCI6MTcwNDAwNjAwMH0.signature',
+          tokenType: 'Bearer',
+          isJWT: true,
+          expiresIn: 3600
+        };
+
+        // Expected behavior:
+        // expect(isValidAccessToken(jwtToken)).toBe(true);
+      });
+
+      it('should return true for opaque access token', () => {
+        const opaqueToken = {
+          token: 'tGzv3JOkF0XG5Qx2TlKWIA',
+          tokenType: 'Bearer',
+          isJWT: false,
+          expiresIn: 3600
+        };
+
+        // Expected behavior:
+        // expect(isValidAccessToken(opaqueToken)).toBe(true);
+      });
+
+      it('should return true for minimal valid access token', () => {
+        const minimalToken = {
+          token: 'access-token-string',
+          tokenType: 'Bearer',
+          isJWT: false
+        };
+
+        // Expected behavior:
+        // expect(isValidAccessToken(minimalToken)).toBe(true);
+      });
+    });
+
+    describe('Invalid Access Token Detection', () => {
+      it('should return false for access token with empty token string', () => {
+        const emptyToken = {
+          token: '',
+          tokenType: 'Bearer',
+          isJWT: false
+        };
+
+        // Expected behavior:
+        // expect(isValidAccessToken(emptyToken)).toBe(false);
+      });
+
+      it('should return false for access token missing required fields', () => {
+        const missingFields = {
+          token: 'some-token'
+          // Missing tokenType and isJWT
+        };
+
+        // Expected behavior:
+        // expect(isValidAccessToken(missingFields as any)).toBe(false);
+      });
+
+      it('should return false for JWT token with mismatched isJWT flag', () => {
+        const mismatchedFlag = {
+          token: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyLTEyMyJ9.signature',
+          tokenType: 'Bearer',
+          isJWT: false // Should be true for JWT
+        };
+
+        // Expected behavior:
+        // expect(isValidAccessToken(mismatchedFlag)).toBe(false);
+      });
+
+      it('should return false for null', () => {
+        // Expected behavior:
+        // expect(isValidAccessToken(null as any)).toBe(false);
+      });
+
+      it('should return false for undefined', () => {
+        // Expected behavior:
+        // expect(isValidAccessToken(undefined as any)).toBe(false);
+      });
+
+      it('should return false for plain string', () => {
+        const plainString = 'not-an-access-token-object';
+
+        // Expected behavior:
+        // expect(isValidAccessToken(plainString as any)).toBe(false);
+      });
+    });
+  });
+
+  describe('isValidFlowExecution()', () => {
+    describe('Valid FlowExecution Detection', () => {
+      it('should return true for complete valid FlowExecution', () => {
+        const validFlow = {
+          id: 'flow-550e8400-e29b-41d4-a716-446655440000',
+          flowType: 'authorization_code_pkce',
+          status: 'complete',
+          startedAt: '2025-12-30T10:30:00.000Z',
+          completedAt: '2025-12-30T10:30:05.000Z',
+          steps: [],
+          config: {
+            client: {},
+            server: {}
+          }
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowExecution(validFlow)).toBe(true);
+      });
+
+      it('should return true for minimal valid FlowExecution', () => {
+        const minimalFlow = {
+          id: 'flow-123',
+          flowType: 'authorization_code_pkce',
+          status: 'idle',
+          startedAt: '2025-12-30T10:30:00.000Z',
+          steps: [],
+          config: {
+            client: {},
+            server: {}
+          }
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowExecution(minimalFlow)).toBe(true);
+      });
+    });
+
+    describe('Invalid FlowExecution Detection', () => {
+      it('should return false for FlowExecution missing required id', () => {
+        const missingId = {
+          flowType: 'authorization_code_pkce',
+          status: 'idle',
+          startedAt: '2025-12-30T10:30:00.000Z',
+          steps: [],
+          config: { client: {}, server: {} }
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowExecution(missingId as any)).toBe(false);
+      });
+
+      it('should return false for FlowExecution with invalid flowType', () => {
+        const invalidFlowType = {
+          id: 'flow-123',
+          flowType: 'invalid_flow_type',
+          status: 'idle',
+          startedAt: '2025-12-30T10:30:00.000Z',
+          steps: [],
+          config: { client: {}, server: {} }
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowExecution(invalidFlowType)).toBe(false);
+      });
+
+      it('should return false for FlowExecution with invalid status', () => {
+        const invalidStatus = {
+          id: 'flow-123',
+          flowType: 'authorization_code_pkce',
+          status: 'invalid_status',
+          startedAt: '2025-12-30T10:30:00.000Z',
+          steps: [],
+          config: { client: {}, server: {} }
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowExecution(invalidStatus)).toBe(false);
+      });
+
+      it('should return false for FlowExecution with invalid timestamp format', () => {
+        const invalidTimestamp = {
+          id: 'flow-123',
+          flowType: 'authorization_code_pkce',
+          status: 'idle',
+          startedAt: 'not-a-timestamp',
+          steps: [],
+          config: { client: {}, server: {} }
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowExecution(invalidTimestamp)).toBe(false);
+      });
+
+      it('should return false for null', () => {
+        // Expected behavior:
+        // expect(isValidFlowExecution(null as any)).toBe(false);
+      });
+
+      it('should return false for undefined', () => {
+        // Expected behavior:
+        // expect(isValidFlowExecution(undefined as any)).toBe(false);
+      });
+    });
+  });
+
+  describe('isValidFlowStep()', () => {
+    describe('Valid FlowStep Detection', () => {
+      it('should return true for complete valid FlowStep', () => {
+        const validStep = {
+          id: 'auth-request',
+          stepNumber: 1,
+          name: 'Authorization Request',
+          status: 'completed',
+          startedAt: '2025-12-30T10:30:00.000Z',
+          completedAt: '2025-12-30T10:30:01.000Z',
+          duration: 1000
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowStep(validStep)).toBe(true);
+      });
+
+      it('should return true for minimal valid FlowStep', () => {
+        const minimalStep = {
+          id: 'step-1',
+          stepNumber: 1,
+          name: 'Step One',
+          status: 'pending',
+          startedAt: '2025-12-30T10:30:00.000Z'
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowStep(minimalStep)).toBe(true);
+      });
+    });
+
+    describe('Invalid FlowStep Detection', () => {
+      it('should return false for FlowStep missing required id', () => {
+        const missingId = {
+          stepNumber: 1,
+          name: 'Step',
+          status: 'pending',
+          startedAt: '2025-12-30T10:30:00.000Z'
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowStep(missingId as any)).toBe(false);
+      });
+
+      it('should return false for FlowStep with invalid status', () => {
+        const invalidStatus = {
+          id: 'step-1',
+          stepNumber: 1,
+          name: 'Step',
+          status: 'invalid_status',
+          startedAt: '2025-12-30T10:30:00.000Z'
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowStep(invalidStatus)).toBe(false);
+      });
+
+      it('should return false for FlowStep with negative stepNumber', () => {
+        const negativeStepNumber = {
+          id: 'step-1',
+          stepNumber: -1,
+          name: 'Step',
+          status: 'pending',
+          startedAt: '2025-12-30T10:30:00.000Z'
+        };
+
+        // Expected behavior:
+        // expect(isValidFlowStep(negativeStepNumber)).toBe(false);
+      });
+
+      it('should return false for null', () => {
+        // Expected behavior:
+        // expect(isValidFlowStep(null as any)).toBe(false);
+      });
+
+      it('should return false for undefined', () => {
+        // Expected behavior:
+        // expect(isValidFlowStep(undefined as any)).toBe(false);
+      });
+    });
+  });
+});
+
+/**
+ * Implementation Notes for future feature-implementer agent:
+ *
+ * Type guards should be implemented in: packages/shared/src/utils/type-guards.ts
+ *
+ * Required type guards:
+ *
+ * 1. isValidJWT(value: unknown): value is JWTString
+ *    - Check format: header.payload.signature (exactly 2 dots)
+ *    - Check base64url encoding (no +, /, or =)
+ *    - Check non-empty parts
+ *
+ * 2. isValidAccessToken(value: unknown): value is AccessToken
+ *    - Check required fields: token, tokenType, isJWT
+ *    - Validate token is non-empty string
+ *    - Validate isJWT matches token format (if JWT, should have JWT structure)
+ *    - Check tokenType is valid (typically "Bearer")
+ *
+ * 3. isValidFlowExecution(value: unknown): value is FlowExecution
+ *    - Check required fields: id, flowType, status, startedAt, steps, config
+ *    - Validate flowType is in FlowType enum
+ *    - Validate status is in FlowStatus enum
+ *    - Validate startedAt is valid ISO 8601 timestamp
+ *    - Validate steps is array
+ *    - Validate config has client and server properties
+ *
+ * 4. isValidFlowStep(value: unknown): value is FlowStep
+ *    - Check required fields: id, stepNumber, name, status, startedAt
+ *    - Validate stepNumber is non-negative integer
+ *    - Validate status is in StepStatus enum
+ *    - Validate startedAt is valid ISO 8601 timestamp
+ *    - If completedAt exists, validate it's after startedAt
+ *
+ * Additional guards to consider:
+ * - isValidHttpRequest(value: unknown): value is HttpRequest
+ * - isValidHttpResponse(value: unknown): value is HttpResponse
+ * - isValidRefreshToken(value: unknown): value is RefreshToken
+ * - isValidIDToken(value: unknown): value is IDToken
+ */

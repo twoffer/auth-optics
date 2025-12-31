@@ -72,8 +72,6 @@ MODEL_PLAN=$(yq '.models.feature_implementer_plan' "$CONFIG_FILE")
 MODEL_IMPL=$(yq '.models.feature_implementer' "$CONFIG_FILE")
 MODEL_TEST=$(yq '.models.test_suite_generator' "$CONFIG_FILE")
 MODEL_REVIEW=$(yq '.models.code_security_reviewer' "$CONFIG_FILE")
-TEST_TYPE=$(yq '.testing.type' "$CONFIG_FILE")
-WRITE_TEST_CODE=$(yq '.testing.write_test_code' "$CONFIG_FILE")
 MASTER_PLAN_SECTIONS=$(yq '.plan_mode.master_plan_sections' "$CONFIG_FILE")
 
 # Display current configuration
@@ -142,14 +140,6 @@ process_conditionals() {
     else
         result=$(echo "$content" | sed '/{{#if security_critical}}/,/{{#endif security_critical}}/d')
     fi
-    content="$result"
-
-    # Process write_test_code conditionals
-    if [ "$WRITE_TEST_CODE" = "true" ]; then
-        result=$(echo "$content" | sed '/{{#if write_test_code}}/,/{{#endif write_test_code}}/{ /{{#if write_test_code}}/d; /{{#endif write_test_code}}/d; }')
-    else
-        result=$(echo "$content" | sed '/{{#if write_test_code}}/,/{{#endif write_test_code}}/d')
-    fi
 
     echo "$result"
 }
@@ -192,7 +182,6 @@ generate_prompt() {
             -e "s|{{github_issue}}|$GITHUB_ISSUE|g" \
             -e "s|{{git_branch}}|$GIT_BRANCH|g" \
             -e "s|{{model}}|$model_var|g" \
-            -e "s|{{test_type}}|$TEST_TYPE|g" \
             -e "s|{{master_plan_sections}}|$MASTER_PLAN_SECTIONS|g"
     } > "$output_file"
 
