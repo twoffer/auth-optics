@@ -1,6 +1,6 @@
 # Pending Issues
 
-**Last Updated**: 2025-12-31 (Updated: Priority 2 Tests Added)
+**Last Updated**: 2025-12-31 (Updated: Added missing review recommendation #3)
 
 **Test Status**: Day 1 Foundation Types - All tests PASSED (249/249 Priority 1)
 - Infrastructure tests: 30/30 passed
@@ -74,7 +74,31 @@ None currently.
 
 ## Low Priority / Nice to Have
 
-None currently.
+### Enhancement: Token Utility Functions
+
+**Description**: Common token operations (expiration checking, time remaining, JWT parsing) are not yet implemented as utility functions. These would reduce code duplication across frontend/backend packages.
+
+**Impact**: Low (developer convenience)
+**Location**: `packages/shared/src/utils/token-utils.ts` (does not exist)
+**Source**: Code review recommendation #3 (@docs/reviews/review-shared-types-day-1-foundation.md)
+
+**Suggested Utility Functions**:
+1. `isTokenExpired(token: AccessToken, clockSkewSeconds?: number): boolean`
+   - Check if access token has expired
+   - Account for clock skew (default 60 seconds)
+
+2. `getTimeRemaining(token: AccessToken): number`
+   - Calculate seconds remaining until token expires
+   - Return Infinity if no expiration
+
+3. `parseJWT(jwtString: JWTString): { header: unknown; payload: unknown; signature: string }`
+   - Parse JWT string into components
+   - Decode base64url-encoded parts
+   - Validate JWT format (3 parts)
+
+**Requires**: feature-implementer agent
+**Deferred to**: Phase 2 (when implementing token handling in frontend/backend)
+**Note**: Consider creating separate `@auth-optics/shared-utils` package for consumer-facing utilities
 
 ## Resolved Recently
 
