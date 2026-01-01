@@ -11,7 +11,7 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run ./scripts/generate-agent-prompts.sh
 
-Generated: 2025-12-30 20:37:26 UTC
+Generated: 2025-12-31 17:45:46 UTC
 Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -22,49 +22,88 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 ## Task: Test the implementation of "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 **Detailed Plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
-**GitHub PR:** "#X"
-**Git Branch:** "feature/XYZ"
+**GitHub PR:** "#11"
+**Git Branch:** "feature/shared-types-day-1-foundation"
 
 ### Requirements
-- Run tests to validate the functionality in GitHub PR "#X" (branch "feature/XYZ") according to the following:
+- Validate the implementation in GitHub PR "#11" (branch "feature/shared-types-day-1-foundation") according to:
   * The Test Plan in the PR
   * The verification checklist in "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
-  * Any other criteria that is relevant to these changes
-- Write test code if `write_test_code: true` and run it
+  * Any other criteria relevant to these changes
+- **Test Execution:** Run all relevant tests (both existing and newly written)
+- **Test Code:** Write new automated test code when needed (see Test Scope Guidance below)
 - Always use the reference specification documents and the official OAuth2/OIDC RFCs/specs to determine what the expected behavior should be
 
 ### Context Loading (See @docs/context/agent-coordination.md)
 **Always Load:**
 - Detailed implementation plan: "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
 - Component specification: "@docs/specs/auth-optics-shared-types-specification.md"
-- GitHub PR diff (if available): "#X"
+- GitHub PR diff (if available): "#11"
 
 **DO NOT Load:**
 - Implementation plans (only use verification checklists)
 - Entire @docs/reference/ directory at once
 
 ### Test Scope Guidance
-**Note:** Test code is not required for:
-- Pure type definitions
-- Configuration files only
-- Documentation updates
 
-**Test Type (from configuration):**
-- `unit`: Test individual functions/components in isolation
-- `integration`: Test component interactions
-- `e2e`: Test complete user workflows
+**When to Write New Test Code:**
+
+You SHOULD write automated test code when the component includes:
+- ✓ Business logic or algorithms (e.g., PKCE generation, token validation)
+- ✓ Security-critical functionality (e.g., authentication, authorization, cryptography)
+- ✓ External integrations (e.g., KeyCloak API calls, HTTP requests)
+- ✓ Complex state management or data transformations
+- ✓ API endpoints with request/response handling
+
+**When Test Code is NOT Required:**
+
+You may skip writing new test code for:
+- Pure TypeScript type definitions (interfaces, types, enums)
+- Configuration files without logic (JSON, YAML)
+- Documentation-only changes (markdown files)
+- Simple utility functions with obvious behavior
+
+**Test Types to Consider:**
+
+Choose the appropriate test type(s) based on what you're testing:
+- **Unit Tests:** Test individual functions/services in isolation
+  - Example: Testing PKCE code_verifier generation function
+  - Location: `packages/[component]/__tests__/unit/`
+- **Integration Tests:** Test interactions between components
+  - Example: Testing OAuth2Client service calling KeyCloak discovery endpoint
+  - Location: `packages/[component]/__tests__/integration/`
+- **End-to-End Tests:** Test complete user workflows across the system
+  - Example: Full authorization code flow from frontend through backend to KeyCloak
+  - Location: `packages/[component]/__tests__/e2e/`
+
+**Test Framework Setup:**
+- **Use vitest** for all automated testing (required)
+- If vitest is not configured for the package, set it up:
+  1. Add to `package.json`: `vitest`, `@vitest/ui`, `@vitest/coverage-v8`
+  2. Create `vitest.config.ts` with TypeScript support
+  3. Add test scripts: `"test": "vitest"`, `"test:coverage": "vitest --coverage"`
+- Reference existing vitest configs in other packages for consistency
+
+**Test Implementation Guidelines:**
+- Follow existing testing patterns in the codebase
+- Write tests using vitest (`describe`, `it`, `expect`) in TypeScript
+- Write tests in the appropriate `__tests__/` directory for the component
+- Ensure tests are deterministic and don't depend on external state
+- Include both happy path and error case scenarios
+- Mock external dependencies appropriately for unit tests
 
 ### Scope Guards (See @docs/context/agent-coordination.md for details)
 **DO:**
-- Validate against specification requirements
-- Write test code if component has logic
+- Validate implementation against specification requirements
+- Write test code for components with logic (per Test Scope Guidance above)
+- Run all relevant tests (existing and newly written)
 - Document test failures in pending-issues.md
-- Verify security properties
+- Verify security properties against the threat model
 
 **DO NOT:**
-- Fix code (report issues only)
-- Modify implementation (testing only)
-- Change test requirements (follow spec)
+- Fix implementation code (report issues only - fixes are handled by other agents)
+- Modify production code (testing only)
+- Change test requirements (follow the specification and verification checklist)
 
 ### Documentation Requirements
 - Write test results to "@docs/test-reports/test-shared-types-day-1-foundation.md"
@@ -104,7 +143,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
    - Test code in packages/"types"/__tests__/ (if applicable)
 
 📋 Context Updates:
-   - pending-issues.md (added [Couint of issues] issues) [if failures]
+   - pending-issues.md (added [Count of issues] issues) [if failures]
 
 🎯 Ready For: code-security-reviewer (or User Review if reviewer already ran)
 
@@ -124,5 +163,5 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)
 - **Project roadmap:** @ROADMAP.md
 - **Current context:** @docs/context/current-phase.md
-- **GitHub PR:** "#X"
-- **Related GitHub Issue:** "#Y"
+- **GitHub PR:** "#11"
+- **Related GitHub Issue:** "#9"

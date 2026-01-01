@@ -11,7 +11,7 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run ./scripts/generate-agent-prompts.sh
 
-Generated: 2025-12-30 20:37:26 UTC
+Generated: 2025-12-31 17:45:46 UTC
 Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -22,7 +22,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 ## Task: Review the implementation of "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ### Requirements
-- Review the functionality in GitHub PR "#X" (git branch "feature/XYZ") and evaluate whether it satisfies the following:
+- Review the functionality in GitHub PR "#11" (git branch "feature/shared-types-day-1-foundation") and evaluate whether it satisfies the following:
   * The design in "@docs/specs/auth-optics-shared-types-specification.md"
   * The specific implementation plan in "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
   * OAuth2/OIDC standards according to the reference specification documentation
@@ -33,7 +33,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 **Always Load:**
 - Component specification: "@docs/specs/auth-optics-shared-types-specification.md"
 - Detailed implementation plan: "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
-- GitHub PR diff (if available): "#X"
+- GitHub PR diff (if available): "#11"
 - @docs/reference/security/security-best-current-practice.md (all parts)
 
 **DO NOT Load:**
@@ -59,7 +59,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 - Create the review results document according to the guidelines in @docs/reviews/README.md
 
 ### Verification Requirements
-- The code in GitHub PR "#X", if it included all suggested fixes and improvements, would meet or exceed OAuth2/OIDC, security, and coding standards
+- The code in GitHub PR "#11", if it included all suggested fixes and improvements, would meet or exceed OAuth2/OIDC, security, and coding standards
 
 ### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
 
@@ -128,5 +128,5 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)
 - **Project roadmap:** @ROADMAP.md
 - **Current context:** @docs/context/current-phase.md
-- **GitHub PR:** "#X"
-- **Related GitHub Issue:** "#Y"
+- **GitHub PR:** "#11"
+- **Related GitHub Issue:** "#9"

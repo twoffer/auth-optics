@@ -1,0 +1,5 @@
+# End-to-End Tests
+
+This directory contains end-to-end tests for the shared types package.
+
+E2E tests verify complete workflows from start to finish.

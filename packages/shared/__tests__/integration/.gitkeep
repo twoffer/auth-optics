@@ -1,0 +1,5 @@
+# Integration Tests
+
+This directory contains integration tests for the shared types package.
+
+Integration tests verify interactions between multiple modules or external systems.
