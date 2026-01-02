@@ -11,20 +11,20 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run ./scripts/generate-agent-prompts.sh
 
-Generated: 2025-12-31 17:45:46 UTC
-Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
+Generated: 2026-01-01 21:26:41 UTC
+Component: "Shared Types Day 2: Configuration & Security Types (Config, Discovery, Security, Vulnerability)"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -->
 
 @agent-code-security-reviewer
 
-## Task: Review the implementation of "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
+## Task: Review the implementation of "Shared Types Day 2: Configuration & Security Types (Config, Discovery, Security, Vulnerability)"
 
 ### Requirements
-- Review the functionality in GitHub PR "#11" (git branch "feature/shared-types-day-1-foundation") and evaluate whether it satisfies the following:
+- Review the functionality in GitHub PR "#12" (git branch "feature/shared-types-day-2-config-security") and evaluate whether it satisfies the following:
   * The design in "@docs/specs/auth-optics-shared-types-specification.md"
-  * The specific implementation plan in "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+  * The specific implementation plan in "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
   * OAuth2/OIDC standards according to the reference specification documentation
   * Standards and best practices for TypeScript, React, Node.js, Vite, Tailwind CSS, Radix UI, and any other technologies used
 - Always use the reference specification documents and the official OAuth2/OIDC RFCs/specs to determine what the expected behavior should be
@@ -32,8 +32,8 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 ### Context Loading (See @docs/context/agent-coordination.md)
 **Always Load:**
 - Component specification: "@docs/specs/auth-optics-shared-types-specification.md"
-- Detailed implementation plan: "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
-- GitHub PR diff (if available): "#11"
+- Detailed implementation plan: "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
+- GitHub PR diff (if available): "#12"
 - @docs/reference/security/security-best-current-practice.md (all parts)
 
 **DO NOT Load:**
@@ -55,11 +55,11 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 - Implement suggestions (reviewer role only)
 
 ### Documentation Requirements
-- Write the review results to "@docs/reviews/review-shared-types-day-1-foundation.md"
+- Write the review results to "@docs/reviews/review-shared-types-day-2-config-security.md"
 - Create the review results document according to the guidelines in @docs/reviews/README.md
 
 ### Verification Requirements
-- The code in GitHub PR "#11", if it included all suggested fixes and improvements, would meet or exceed OAuth2/OIDC, security, and coding standards
+- The code in GitHub PR "#12", if it included all suggested fixes and improvements, would meet or exceed OAuth2/OIDC, security, and coding standards
 
 ### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
 
@@ -86,7 +86,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
       ✓ Code quality issues listed
       ✓ Suggestions for improvement provided
 - [ ] All documentation created
-      ✓ Review report exists at "@docs/reviews/review-shared-types-day-1-foundation.md"
+      ✓ Review report exists at "@docs/reviews/review-shared-types-day-2-config-security.md"
       ✓ Issues categorized by severity
       ✓ Recommendations actionable
 - [ ] All project tracking updated
@@ -102,7 +102,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 ✅ AGENT COMPLETE: code-security-reviewer
 
 📁 Artifacts Created:
-   - "@docs/reviews/review-shared-types-day-1-foundation.md"
+   - "@docs/reviews/review-shared-types-day-2-config-security.md"
 
 📋 Context Updates:
    - current-phase.md (updated: Current Phase, Next Steps)
@@ -122,11 +122,11 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 ### References
 - **Coordination guide:** @docs/context/agent-coordination.md (read first!)
 - **Component specification:** "@docs/specs/auth-optics-shared-types-specification.md"
-- **Detailed plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+- **Detailed plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
 - **Security BCP (always load):** @docs/reference/security/security-best-current-practice.md
 - **Architecture:** @docs/specs/auth-optics-architecture.md
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)
 - **Project roadmap:** @ROADMAP.md
 - **Current context:** @docs/context/current-phase.md
-- **GitHub PR:** "#11"
-- **Related GitHub Issue:** "#9"
+- **GitHub PR:** "#12"
+- **Related GitHub Issue:** "#10"

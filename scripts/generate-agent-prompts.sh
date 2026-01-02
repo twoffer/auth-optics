@@ -144,6 +144,12 @@ process_conditionals() {
     echo "$result"
 }
 
+# Function to escape special characters for sed replacement
+# In sed, & and \ have special meaning in replacement strings
+escape_sed_replacement() {
+    echo "$1" | sed 's/[&/\]/\\&/g'
+}
+
 # Function to generate a prompt from template
 generate_prompt() {
     local template_file="$1"
@@ -166,23 +172,38 @@ generate_prompt() {
     # Process conditional blocks first
     template_content=$(process_conditionals "$template_content")
 
+    # Escape special characters in replacement values for sed
+    local component_name_escaped=$(escape_sed_replacement "$COMPONENT_NAME")
+    local component_type_escaped=$(escape_sed_replacement "$COMPONENT_TYPE")
+    local specification_escaped=$(escape_sed_replacement "$SPECIFICATION")
+    local master_plan_escaped=$(escape_sed_replacement "$MASTER_PLAN")
+    local detailed_plan_escaped=$(escape_sed_replacement "$DETAILED_PLAN")
+    local output_plan_escaped=$(escape_sed_replacement "$OUTPUT_PLAN")
+    local output_review_escaped=$(escape_sed_replacement "$OUTPUT_REVIEW")
+    local output_test_report_escaped=$(escape_sed_replacement "$OUTPUT_TEST_REPORT")
+    local github_pr_escaped=$(escape_sed_replacement "$GITHUB_PR")
+    local github_issue_escaped=$(escape_sed_replacement "$GITHUB_ISSUE")
+    local git_branch_escaped=$(escape_sed_replacement "$GIT_BRANCH")
+    local model_var_escaped=$(escape_sed_replacement "$model_var")
+    local master_plan_sections_escaped=$(escape_sed_replacement "$MASTER_PLAN_SECTIONS")
+
     # Generate header and content, then write to output
     {
         generate_header "$template_name"
         echo "$template_content" | sed \
-            -e "s|{{component_name}}|$COMPONENT_NAME|g" \
-            -e "s|{{component_type}}|$COMPONENT_TYPE|g" \
-            -e "s|{{specification}}|$SPECIFICATION|g" \
-            -e "s|{{master_plan}}|$MASTER_PLAN|g" \
-            -e "s|{{detailed_plan}}|$DETAILED_PLAN|g" \
-            -e "s|{{output_plan}}|$OUTPUT_PLAN|g" \
-            -e "s|{{output_review}}|$OUTPUT_REVIEW|g" \
-            -e "s|{{output_report}}|$OUTPUT_TEST_REPORT|g" \
-            -e "s|{{github_pr}}|$GITHUB_PR|g" \
-            -e "s|{{github_issue}}|$GITHUB_ISSUE|g" \
-            -e "s|{{git_branch}}|$GIT_BRANCH|g" \
-            -e "s|{{model}}|$model_var|g" \
-            -e "s|{{master_plan_sections}}|$MASTER_PLAN_SECTIONS|g"
+            -e "s|{{component_name}}|$component_name_escaped|g" \
+            -e "s|{{component_type}}|$component_type_escaped|g" \
+            -e "s|{{specification}}|$specification_escaped|g" \
+            -e "s|{{master_plan}}|$master_plan_escaped|g" \
+            -e "s|{{detailed_plan}}|$detailed_plan_escaped|g" \
+            -e "s|{{output_plan}}|$output_plan_escaped|g" \
+            -e "s|{{output_review}}|$output_review_escaped|g" \
+            -e "s|{{output_report}}|$output_test_report_escaped|g" \
+            -e "s|{{github_pr}}|$github_pr_escaped|g" \
+            -e "s|{{github_issue}}|$github_issue_escaped|g" \
+            -e "s|{{git_branch}}|$git_branch_escaped|g" \
+            -e "s|{{model}}|$model_var_escaped|g" \
+            -e "s|{{master_plan_sections}}|$master_plan_sections_escaped|g"
     } > "$output_file"
 
     echo -e "${GREEN}✓${NC}"

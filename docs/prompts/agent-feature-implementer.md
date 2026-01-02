@@ -11,18 +11,18 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run ./scripts/generate-agent-prompts.sh
 
-Generated: 2025-12-31 17:45:46 UTC
-Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
+Generated: 2026-01-01 21:26:41 UTC
+Component: "Shared Types Day 2: Configuration & Security Types (Config, Discovery, Security, Vulnerability)"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -->
 
 @agent-feature-implementer
 
-## Task: Implement the detailed plan for "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
+## Task: Implement the detailed plan for "Shared Types Day 2: Configuration & Security Types (Config, Discovery, Security, Vulnerability)"
 
 ### Requirements
-- Implement the checklist in "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+- Implement the checklist in "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
 - Consult the component specification ("@docs/specs/auth-optics-shared-types-specification.md") for context and architectural direction
 - Follow the technical specification exactly
 - Use the OAuth2 RFCs and OIDC specs as the final authorities
@@ -34,7 +34,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ### Context Loading (See @docs/context/agent-coordination.md)
 **Always Load:**
-- Detailed implementation plan: "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+- Detailed implementation plan: "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
 - Component specification: "@docs/specs/auth-optics-shared-types-specification.md"
 - @docs/context/current-phase.md
 
@@ -57,7 +57,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 - Skip verification steps
 
 ### Verification Requirements
-- Run through the verification checklists in "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md" to ensure that you have implemented everything correctly
+- Run through the verification checklists in "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md" to ensure that you have implemented everything correctly
 
 ### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
 
@@ -76,7 +76,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 - [ ] Update "Next Steps" with what should be done next (if blocked)
 - [ ] Update "Last Updated" timestamp
 
-**Update "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md":**
+**Update "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md":**
 - [ ] Mark completed tasks as `[x]` in the relevant sections (PRIMARY OWNER)
 
 **Update @docs/context/pending-issues.md (if applicable):**
@@ -122,7 +122,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
    - ROADMAP.md (marked tasks complete, updated progress)
    - CLAUDE.md (updated Project Status)
    - current-phase.md (updated Recently Completed, Next Steps)
-   - "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md" (marked tasks [x])
+   - "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md" (marked tasks [x])
 
 🎯 Ready For: test-suite-generator AND code-security-reviewer (can run in parallel)
 
@@ -137,7 +137,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ### References
 - **Coordination guide:** @docs/context/agent-coordination.md (read first!)
-- **Detailed plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+- **Detailed plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
 - **Component specification:** "@docs/specs/auth-optics-shared-types-specification.md"
 - **Architecture:** @docs/specs/auth-optics-architecture.md
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)

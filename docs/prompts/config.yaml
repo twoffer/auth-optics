@@ -6,7 +6,7 @@
 # COMPONENT CONFIGURATION
 # ============================================================================
 component:
-  name: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
+  name: "Shared Types Day 2: Configuration & Security Types (Config, Discovery, Security, Vulnerability)"
   type: "types"  # Options: types | backend | frontend | mock-resource-server
 
 # ============================================================================
@@ -18,20 +18,20 @@ paths:
 
   # Implementation plans
   master_plan: "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
-  detailed_plan: "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+  detailed_plan: "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
 
   # Output paths
-  output_plan: "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
-  output_review: "@docs/reviews/review-shared-types-day-1-foundation.md"
-  output_test_report: "@docs/test-reports/test-shared-types-day-1-foundation.md"
+  output_plan: "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
+  output_review: "@docs/reviews/review-shared-types-day-2-config-security.md"
+  output_test_report: "@docs/test-reports/test-shared-types-day-2-config-security.md"
 
 # ============================================================================
 # GITHUB REFERENCES
 # ============================================================================
 github:
-  pr: "#11"
-  issue: "#9"
-  branch: "feature/shared-types-day-1-foundation"
+  pr: "#12"
+  issue: "#10"
+  branch: "feature/shared-types-day-2-config-security"
 
 # ============================================================================
 # CONTEXT LOADING FLAGS
@@ -61,7 +61,7 @@ models:
 # ============================================================================
 plan_mode:
   # Which sections of master plan to create detailed plan for
-  master_plan_sections: "Day 1 (Section 4.2)"  # Examples: "Sections 1.4-4.2", "Day 1, Sessions 1 - 4"
+  master_plan_sections: "Day 2 (Section 4.2)"  # Examples: "Sections 1.4-4.2", "Day 2, Sessions 1 - 2"
 
 # ============================================================================
 # EXAMPLES FOR OTHER COMPONENTS
