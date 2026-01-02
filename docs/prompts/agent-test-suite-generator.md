@@ -11,24 +11,24 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run ./scripts/generate-agent-prompts.sh
 
-Generated: 2025-12-31 17:45:46 UTC
-Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
+Generated: 2026-01-01 21:26:41 UTC
+Component: "Shared Types Day 2: Configuration & Security Types (Config, Discovery, Security, Vulnerability)"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -->
 
 @agent-test-suite-generator
 
-## Task: Test the implementation of "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
+## Task: Test the implementation of "Shared Types Day 2: Configuration & Security Types (Config, Discovery, Security, Vulnerability)"
 
-**Detailed Plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
-**GitHub PR:** "#11"
-**Git Branch:** "feature/shared-types-day-1-foundation"
+**Detailed Plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
+**GitHub PR:** "#12"
+**Git Branch:** "feature/shared-types-day-2-config-security"
 
 ### Requirements
-- Validate the implementation in GitHub PR "#11" (branch "feature/shared-types-day-1-foundation") according to:
+- Validate the implementation in GitHub PR "#12" (branch "feature/shared-types-day-2-config-security") according to:
   * The Test Plan in the PR
-  * The verification checklist in "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+  * The verification checklist in "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
   * Any other criteria relevant to these changes
 - **Test Execution:** Run all relevant tests (both existing and newly written)
 - **Test Code:** Write new automated test code when needed (see Test Scope Guidance below)
@@ -36,9 +36,9 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 
 ### Context Loading (See @docs/context/agent-coordination.md)
 **Always Load:**
-- Detailed implementation plan: "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+- Detailed implementation plan: "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
 - Component specification: "@docs/specs/auth-optics-shared-types-specification.md"
-- GitHub PR diff (if available): "#11"
+- GitHub PR diff (if available): "#12"
 
 **DO NOT Load:**
 - Implementation plans (only use verification checklists)
@@ -106,7 +106,7 @@ Choose the appropriate test type(s) based on what you're testing:
 - Change test requirements (follow the specification and verification checklist)
 
 ### Documentation Requirements
-- Write test results to "@docs/test-reports/test-shared-types-day-1-foundation.md"
+- Write test results to "@docs/test-reports/test-shared-types-day-2-config-security.md"
 - Create the test results document according to the guidelines in @docs/test-reports/README.md
 
 ### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
@@ -126,7 +126,7 @@ Choose the appropriate test type(s) based on what you're testing:
       ✓ Test failures added to pending-issues.md
       ✓ Issues categorized by priority
 - [ ] All documents updated
-      ✓ Test report exists at "@docs/test-reports/test-shared-types-day-1-foundation.md"
+      ✓ Test report exists at "@docs/test-reports/test-shared-types-day-2-config-security.md"
 - [ ] All project tracking updated
       ✓ pending-issues.md updated (if failures)
 - [ ] Ready for next phase
@@ -139,7 +139,7 @@ Choose the appropriate test type(s) based on what you're testing:
 ✅ AGENT COMPLETE: test-suite-generator
 
 📁 Artifacts Created:
-   - "@docs/test-reports/test-shared-types-day-1-foundation.md"
+   - "@docs/test-reports/test-shared-types-day-2-config-security.md"
    - Test code in packages/"types"/__tests__/ (if applicable)
 
 📋 Context Updates:
@@ -157,11 +157,11 @@ Choose the appropriate test type(s) based on what you're testing:
 
 ### References
 - **Coordination guide:** @docs/context/agent-coordination.md (read first!)
-- **Detailed plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+- **Detailed plan:** "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
 - **Component specification:** "@docs/specs/auth-optics-shared-types-specification.md"
 - **Architecture:** @docs/specs/auth-optics-architecture.md
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)
 - **Project roadmap:** @ROADMAP.md
 - **Current context:** @docs/context/current-phase.md
-- **GitHub PR:** "#11"
-- **Related GitHub Issue:** "#9"
+- **GitHub PR:** "#12"
+- **Related GitHub Issue:** "#10"

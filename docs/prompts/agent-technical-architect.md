@@ -11,15 +11,15 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run ./scripts/generate-agent-prompts.sh
 
-Generated: 2025-12-31 17:45:46 UTC
-Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
+Generated: 2026-01-01 21:26:41 UTC
+Component: "Shared Types Day 2: Configuration & Security Types (Config, Discovery, Security, Vulnerability)"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -->
 
 @agent-technical-architect
 
-## Task: Create the implementation plan for "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
+## Task: Create the implementation plan for "Shared Types Day 2: Configuration & Security Types (Config, Discovery, Security, Vulnerability)"
 
 ### Requirements
 - Review the Component Specification ("@docs/specs/auth-optics-shared-types-specification.md") and create a comprehensive implementation plan that includes the following:
@@ -44,7 +44,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 - Test reports or reviews
 
 ### Documentation Requirements
-- Write the implementation plan to "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+- Write the implementation plan to "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
 - Create the implementation plan document according to the guidelines in @docs/implementation-plans/README.md
 
 ### Verification Requirements
@@ -84,7 +84,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
       ✓ current-phase.md updated with new plan
       ✓ "Last Updated" timestamp current
 - [ ] Ready for next phase
-      ✓ Plan document exists at "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+      ✓ Plan document exists at "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
       ✓ No critical blockers in pending-issues.md
       ✓ Next agent (feature-implementer) has all required inputs
 
@@ -94,7 +94,7 @@ Component: "Shared Types Day 1: Foundation Types (Utilities, Flow, Token, HTTP)"
 ✅ AGENT COMPLETE: technical-architect
 
 📁 Artifacts Created:
-   - "@docs/implementation-plans/feature-implementer/shared-types-day-1-foundation.md"
+   - "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
 
 📋 Context Updates:
    - current-phase.md (updated: Current Phase, Next Steps)
