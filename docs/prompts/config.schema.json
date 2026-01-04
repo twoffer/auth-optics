@@ -1,0 +1,251 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/twoffer/auth-optics/schemas/agent-prompt-config.schema.json",
+  "title": "Agent Prompt Configuration",
+  "description": "Schema for agent prompt generation configuration files",
+  "type": "object",
+  "required": ["component", "session", "paths", "models"],
+  "additionalProperties": false,
+  "properties": {
+    "component": {
+      "type": "object",
+      "description": "Component being implemented",
+      "required": ["name", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Human-readable component name",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "description": "Component type",
+          "enum": ["types", "service", "component", "feature", "api", "ui", "integration"]
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "description": "Multi-session implementation configuration",
+      "required": ["enabled", "current", "total"],
+      "additionalProperties": true,
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether multi-session mode is enabled"
+        },
+        "current": {
+          "type": "integer",
+          "description": "Current session number (1-based)",
+          "minimum": 1
+        },
+        "total": {
+          "type": "integer",
+          "description": "Total number of sessions",
+          "minimum": 1
+        }
+      },
+      "patternProperties": {
+        "^session_[0-9]+$": {
+          "type": "object",
+          "description": "Individual session configuration",
+          "required": ["scope", "duration", "file_count", "plan_sections", "prerequisites_check_ref"],
+          "additionalProperties": false,
+          "properties": {
+            "scope": {
+              "type": "string",
+              "description": "Session scope description",
+              "minLength": 1
+            },
+            "duration": {
+              "type": "string",
+              "description": "Estimated duration (e.g., '2-4 hours')",
+              "pattern": "^[0-9]+-[0-9]+ hours?$"
+            },
+            "file_count": {
+              "type": "integer",
+              "description": "Expected number of files to implement",
+              "minimum": 1
+            },
+            "plan_sections": {
+              "type": "object",
+              "description": "References to plan document sections",
+              "required": ["file_list", "implementation", "verification", "completion_checklist"],
+              "additionalProperties": true,
+              "properties": {
+                "file_list": {
+                  "type": "string",
+                  "description": "Section reference(s) for file list (e.g., 'Section 3.1', 'Section 1.2, Section 6.4', 'Section 1.1-4.3')",
+                  "minLength": 1
+                },
+                "implementation": {
+                  "type": "string",
+                  "description": "Section reference(s) for implementation details (e.g., 'Section 3.1', 'Section 1.2, Section 6.4', 'Section 1.1-4.3')",
+                  "minLength": 1
+                },
+                "verification": {
+                  "type": "string",
+                  "description": "Section reference(s) for verification steps (e.g., 'Section 4.3', 'Section 1.2, Section 6.4', 'Section 1.1-4.3')",
+                  "minLength": 1
+                },
+                "completion_checklist": {
+                  "type": "string",
+                  "description": "Section reference(s) for completion checklist (e.g., 'Section 6.1', 'Section 1.2, Section 6.4', 'Section 1.1-4.3')",
+                  "minLength": 1
+                },
+                "comprehensive_verification": {
+                  "type": "string",
+                  "description": "Section reference(s) for comprehensive verification (e.g., 'Section 4.5, Section 6.3', 'Section 1.1-4.3')",
+                  "minLength": 1
+                }
+              }
+            },
+            "prerequisites_check_ref": {
+              "type": "string",
+              "description": "Section reference(s) for prerequisite checks (e.g., 'Section 2.1', 'Section 1.2, Section 6.4', 'Section 1.1-4.3')",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "enabled": { "const": true }
+            }
+          },
+          "then": {
+            "description": "When sessions are enabled, current must be <= total",
+            "properties": {
+              "current": {
+                "type": "integer"
+              },
+              "total": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "paths": {
+      "type": "object",
+      "description": "File path references",
+      "required": ["specification", "master_plan", "detailed_plan"],
+      "additionalProperties": true,
+      "properties": {
+        "specification": {
+          "type": "string",
+          "description": "Path to specification document",
+          "pattern": "^@?(docs/|\\./|/)"
+        },
+        "master_plan": {
+          "type": "string",
+          "description": "Path to master implementation plan",
+          "pattern": "^@?(docs/|\\./|/)"
+        },
+        "detailed_plan": {
+          "type": "string",
+          "description": "Path to detailed implementation plan",
+          "pattern": "^@?(docs/|\\./|/)"
+        },
+        "output_plan": {
+          "type": "string",
+          "description": "Path for output plan (feature-implementer)",
+          "pattern": "^@?(docs/|\\./|/)"
+        },
+        "output_review": {
+          "type": "string",
+          "description": "Path for output review (code-security-reviewer)",
+          "pattern": "^@?(docs/|\\./|/)"
+        },
+        "output_test_report": {
+          "type": "string",
+          "description": "Path for output test report (test-suite-generator)",
+          "pattern": "^@?(docs/|\\./|/)"
+        }
+      }
+    },
+    "github": {
+      "type": "object",
+      "description": "GitHub references",
+      "additionalProperties": false,
+      "properties": {
+        "pr": {
+          "type": "string",
+          "description": "Pull request reference (e.g., '#12')",
+          "pattern": "^#[0-9]+$"
+        },
+        "issue": {
+          "type": "string",
+          "description": "Issue reference (e.g., '#10')",
+          "pattern": "^#[0-9]+$"
+        },
+        "branch": {
+          "type": "string",
+          "description": "Git branch name",
+          "minLength": 1
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "description": "Context loading flags for agent initialization",
+      "additionalProperties": false,
+      "properties": {
+        "requires_oauth": {
+          "type": "boolean",
+          "description": "Whether OAuth2 context should be loaded"
+        },
+        "requires_keycloak": {
+          "type": "boolean",
+          "description": "Whether KeyCloak context should be loaded"
+        },
+        "security_critical": {
+          "type": "boolean",
+          "description": "Whether this is security-critical work"
+        }
+      }
+    },
+    "models": {
+      "type": "object",
+      "description": "Model recommendations for different agent types",
+      "required": ["feature_implementer"],
+      "additionalProperties": true,
+      "properties": {
+        "technical_architect": {
+          "type": "string",
+          "description": "Model for technical-architect agent",
+          "enum": ["haiku", "sonnet", "opus"]
+        },
+        "feature_implementer_plan": {
+          "type": "string",
+          "description": "Model for feature-implementer in plan mode",
+          "enum": ["haiku", "sonnet", "opus"]
+        },
+        "feature_implementer": {
+          "type": "string",
+          "description": "Model for feature-implementer agent",
+          "enum": ["haiku", "sonnet", "opus"]
+        },
+        "test_suite_generator": {
+          "type": "string",
+          "description": "Model for test-suite-generator agent",
+          "enum": ["haiku", "sonnet", "opus"]
+        },
+        "code_security_reviewer": {
+          "type": "string",
+          "description": "Model for code-security-reviewer agent",
+          "enum": ["haiku", "sonnet", "opus"]
+        },
+        "integration_validator": {
+          "type": "string",
+          "description": "Model for integration-validator agent",
+          "enum": ["haiku", "sonnet", "opus"]
+        }
+      }
+    }
+  }
+}

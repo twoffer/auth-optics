@@ -1,0 +1,113 @@
+name: Validate Configuration
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'docs/prompts/**/*.yaml'
+      - 'docs/prompts/**/*.schema.json'
+      - 'scripts/src/**/*.ts'
+      - 'scripts/__tests__/**/*.test.ts'
+      - '.github/workflows/validate-config.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'docs/prompts/**/*.yaml'
+      - 'docs/prompts/**/*.schema.json'
+      - 'scripts/src/**/*.ts'
+      - 'scripts/__tests__/**/*.test.ts'
+
+jobs:
+  validate-config-schema:
+    name: Validate Configuration Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Validate config.yaml
+        run: pnpm validate
+
+      - name: Validate all config files
+        run: |
+          for config in docs/prompts/*.yaml; do
+            if [[ ! "$config" =~ "old" ]] && [[ ! "$config" =~ "template" ]]; then
+              echo "Validating $config..."
+              pnpm --filter auth-optics-scripts validate -- "$config"
+            fi
+          done
+
+  test-scripts-package:
+    name: Run Scripts Package Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        working-directory: scripts
+        run: pnpm install
+
+      - name: Run validation tests
+        working-directory: scripts
+        run: pnpm test
+
+  validate-all:
+    name: All Validations Passed
+    runs-on: ubuntu-latest
+    needs: [validate-config-schema, test-scripts-package]
+
+    steps:
+      - name: Success
+        run: echo "✅ All configuration validations passed!"
