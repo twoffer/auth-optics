@@ -26,15 +26,21 @@ const __dirname = dirname(__filename);
  */
 async function main() {
   // Determine config file path
-  const configArg = process.argv[2];
+  // Filter out '--' separator if present (from pnpm --filter ... validate -- file.yaml)
+  const args = process.argv.slice(2).filter(arg => arg !== '--');
+  const configArg = args[0];
+
+  // __dirname is scripts/src, so go up 2 levels to project root
+  const projectRoot = resolve(__dirname, '../..');
   let configFile: string;
 
   if (configArg) {
-    configFile = resolve(configArg);
+    // If path starts with /, treat as absolute; otherwise resolve from project root
+    configFile = configArg.startsWith('/')
+      ? configArg
+      : resolve(projectRoot, configArg);
   } else {
     // Default to docs/prompts/config.yaml
-    // __dirname is scripts/src, so go up 2 levels to project root
-    const projectRoot = resolve(__dirname, '../..');
     configFile = join(projectRoot, 'docs', 'prompts', 'config.yaml');
   }
 
