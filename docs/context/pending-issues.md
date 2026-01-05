@@ -1,6 +1,6 @@
 # Pending Issues
 
-**Last Updated**: 2025-12-31 (Updated: Added missing review recommendation #3)
+**Last Updated**: 2026-01-04 (Updated: Added PR #14 code review findings - 2 medium priority, 7 low priority enhancements)
 
 **Test Status**: Day 1 Foundation Types - All tests PASSED (249/249 Priority 1)
 - Infrastructure tests: 30/30 passed
@@ -26,6 +26,28 @@ None currently.
 None currently.
 
 ## Medium Priority
+
+### PR #14 Enhancement: GitHub Actions Error Handling
+
+**Description**: Bash loop in GitHub Actions workflow could be more robust with explicit error handling.
+
+**Impact**: Medium (CI/CD reliability)
+**Location**: `.github/workflows/validate-config.yml:61`
+**Source**: PR #14 review - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927281)
+**Recommendation**: Add `set -e` for explicit error handling and clearer error messages on validation failure
+**Priority**: Medium
+**Status**: Identified, not yet implemented
+
+### PR #14 Enhancement: Session Key Validation
+
+**Description**: Current session key validation could be more precise using regex to catch edge cases like `session_0` or `session_1_backup`.
+
+**Impact**: Low-Medium (validation completeness)
+**Location**: `scripts/src/lib/validator.ts:119`
+**Source**: PR #14 review - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927284)
+**Recommendation**: Use regex pattern matching (`/^session_(\d+)$/`) for more comprehensive validation
+**Priority**: Medium
+**Status**: Identified, not yet implemented
 
 ### Missing Feature: Type Guard Functions
 
@@ -74,6 +96,49 @@ None currently.
 
 ## Low Priority / Nice to Have
 
+### PR #14: Development Tool Enhancements
+
+**Description**: Multiple low-priority enhancements identified for the prompt generation tool.
+
+**Source**: PR #14 review - [Full review](https://github.com/twoffer/auth-optics/pull/14)
+
+**Enhancements**:
+
+1. **File Size Validation** (`scripts/src/lib/config-loader.ts:26`)
+   - Add sanity check for config file size (e.g., 10MB limit)
+   - Prevents accidental loading of corrupted/malformed large files
+   - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927276)
+
+2. **Template Caching** (`scripts/src/generate-agent-prompts.ts:114`)
+   - Cache compiled Handlebars templates for performance
+   - Currently not needed (5 templates, <100ms validation)
+   - Future-proofing for scaling to many templates
+   - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927278)
+
+3. **Error Value Redaction** (`scripts/src/lib/validator.ts:69`)
+   - Redact sensitive fields in validation error messages
+   - Defense-in-depth for potential secrets in config
+   - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927277)
+
+4. **Enhanced Error Messages** (`scripts/src/lib/context-builder.ts:25`)
+   - More actionable guidance when config is incorrect
+   - Suggest specific fixes in error messages
+   - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927280)
+
+5. **JSDoc Documentation** (`scripts/src/types/config.ts:30`)
+   - Add JSDoc comments for type interfaces
+   - Improves IDE autocompletion and hints
+   - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927282)
+
+6. **Snapshot Testing** (Testing suggestion)
+   - Add snapshot tests for generated prompt files
+   - Catch unintended changes in output format
+   - See [comprehensive review summary](https://github.com/twoffer/auth-optics/pull/14#issuecomment-2571959516)
+
+**Impact**: Low (quality of life improvements)
+**Priority**: Low
+**Status**: Identified, deferred to future iterations
+
 ### Enhancement: Token Utility Functions
 
 **Description**: Common token operations (expiration checking, time remaining, JWT parsing) are not yet implemented as utility functions. These would reduce code duplication across frontend/backend packages.
@@ -102,7 +167,20 @@ None currently.
 
 ## Resolved Recently
 
-None yet.
+### Dependency Audit in CI (Completed 2026-01-05)
+
+**Description**: Added `pnpm audit` step to GitHub Actions for proactive security monitoring of dependencies.
+
+**Resolution**: Created new top-level CI workflow (`.github/workflows/ci.yml`) with comprehensive checks including security audit, linting, type checking, tests, and build verification.
+
+**Implementation Details**:
+- Security audit job runs `pnpm audit --audit-level=moderate` on all workspace packages
+- Workflow runs on push/PR to main and develop branches
+- Audit failures will block CI and prevent merges
+- Additional jobs for lint, type-check, test, and build provide comprehensive CI coverage
+
+**Source**: PR #14 review - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927285)
+**Implemented by**: Claude Code (2026-01-05)
 
 ---
 

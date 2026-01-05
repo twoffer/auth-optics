@@ -19,7 +19,7 @@
 - Use the navigation guide to find specific flow/token/security documents needed
 - Consult master plan for which documents are most relevant
 
-{{#endif requires_oauth_context}}
+{{/if}}
 **DO NOT Load:**
 - OAuth2 RFCs for non-OAuth components (e.g., shared types)
 - Entire @docs/reference/ directory at once

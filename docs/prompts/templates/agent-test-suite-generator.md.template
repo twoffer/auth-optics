@@ -27,13 +27,13 @@
 - Use the navigation guide to find expected behavior specifications
 - Focus on validation requirements for the component being tested
 
-{{#endif requires_oauth_context}}
+{{/if}}
 {{#if security_critical}}
 **Security-Critical Context:**
 - @docs/reference/security/oauth2-oidc-threat-model-INDEX.md
 - Use to understand which attacks should be prevented by this component
 
-{{#endif security_critical}}
+{{/if}}
 **DO NOT Load:**
 - Implementation plans (only use verification checklists)
 - Entire @docs/reference/ directory at once

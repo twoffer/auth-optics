@@ -1,21 +1,65 @@
 @agent-feature-implementer
 
+{{#if session_mode}}
+## Task: Implement {{component_name}} - Session {{session_number}} of {{total_sessions}}
+
+### Session Scope
+**This Session**: {{session_scope}}
+**Session Duration**: {{session_duration}}
+**Files in This Session**: ~{{session_file_count}} files (see detailed plan)
+
+{{#if session_number_gt_1}}
+### Prerequisites (CRITICAL - Verify First)
+**Required**: Session {{previous_session}} must be complete before starting this session
+
+**Verification**: See {{detailed_plan}} {{session_prerequisites_section}} for prerequisite checks
+
+{{/if}}
+
+{{else}}
 ## Task: Implement the detailed plan for {{component_name}}
+{{/if}}
 
 ### Requirements
-- Implement the checklist in {{detailed_plan}}
+{{#if session_mode}}
+- **Implementation Scope**: See {{detailed_plan}} {{session_implementation_section}} for:
+  - Complete file list for Session {{session_number}}
+  - Implementation instructions for each file
+  - Technical requirements and specifications
+- **DO NOT** implement files from other sessions
+- **STOP** after completing Session {{session_number}} verification
+{{else}}
+- Implement the complete checklist in {{detailed_plan}}
+{{/if}}
 - Consult the component specification ({{specification}}) for context and architectural direction
 - Follow the technical specification exactly
 - Use the OAuth2 RFCs and OIDC specs as the final authorities
+{{#if session_mode}}
+{{#if is_final_session}}
 - When finished with all implementation and verification tasks:
-  * Create a new git branch
-  * Commit the changes
-  * Push the changes to origin
-  * Create a GitHub PR for this branch
+  - Commit all pending changes to existing branch (or create if Session 1)
+  - Push the changes to origin
+  - Create a GitHub PR for this branch
+{{else}}
+- When finished with Session {{session_number}}:
+  - Commit changes to existing branch (or create if Session 1)
+  - DO NOT create PR yet (wait for Session {{total_sessions}})
+  - DO NOT continue to Session {{next_session}}
+{{/if}}
+{{else}}
+- When finished with all implementation and verification tasks:
+  - Create a new git branch
+  - Commit the changes
+  - Push the changes to origin
+  - Create a GitHub PR for this branch
+{{/if}}
 
 ### Context Loading (See @docs/context/agent-coordination.md)
 **Always Load:**
 - Detailed implementation plan: {{detailed_plan}}
+{{#if session_mode}}
+  - **Session {{session_number}} Focus**: {{session_implementation_section}}
+{{/if}}
 - Component specification: {{specification}}
 - @docs/context/current-phase.md
 
@@ -23,60 +67,116 @@
 **OAuth2/OIDC Context:**
 - START HERE: @docs/reference/00-NAVIGATION-START-HERE.md (master index)
 - Use the navigation guide to find specific documents needed for your component
-- Common needs: flows/, tokens/, security/ documents (use index to locate)
 
-{{#endif requires_oauth_context}}
+{{/if}}
 {{#if requires_keycloak_context}}
 **KeyCloak Integration Context:**
 - @docs/reference/keycloak/keycloak-integration-requirements.md
 
-{{#endif requires_keycloak_context}}
+{{/if}}
 {{#if security_critical}}
 **Security-Critical Context:**
 - @docs/reference/security/oauth2-oidc-threat-model-INDEX.md (comprehensive threat index)
-- Use to understand attack vectors and required mitigations
 
-{{#endif security_critical}}
+{{/if}}
 **DO NOT Load:**
 - Deprecated flow specs unless explicitly required in plan
 - Entire @docs/reference/ directory at once
 
 ### Scope Guards (See @docs/context/agent-coordination.md for details)
 **DO:**
+{{#if session_mode}}
+- **Read {{detailed_plan}} {{session_file_list_section}}** to see exactly which files to implement
+- Implement ONLY the files listed in Session {{session_number}}
+- Mark Session {{session_number}} tasks complete as you finish them
+{{else}}
 - Implement exactly what's in the detailed plan
-- Document implementation decisions in ROADMAP.md "Implementation Notes"
 - Mark tasks complete as you finish them
+{{/if}}
+- Document implementation decisions in ROADMAP.md "Implementation Notes"
 - Update progress tracking
 
 **DO NOT:**
+{{#if session_mode}}
+- Implement files from Session {{next_session}} or later sessions
+- Continue past Session {{session_number}} completion
+- Skip Session {{session_number}} verification steps
+{{else}}
 - Implement features beyond the detailed plan (no scope creep)
+- Skip verification steps
+{{/if}}
 - Refactor code outside the component scope
 - Modify specification documents (flag discrepancies in pending-issues.md)
 - Change architectural decisions (escalate to user)
-- Skip verification steps
+
+{{#if session_mode}}
+### Session {{session_number}} Implementation Scope
+
+**File List**: See {{detailed_plan}} {{session_file_list_section}}
+
+**Implementation Instructions**: See {{detailed_plan}} {{session_implementation_section}}
+
+**Total Files**: ~{{session_file_count}} files
+
+### STOP Condition (CRITICAL)
+✋ **STOP after completing**:
+- [ ] All files from {{session_file_list_section}} created
+- [ ] Session {{session_number}} verification passes (see {{session_verification_section}})
+- [ ] Session {{session_number}} completion checklist done (see {{session_completion_checklist_section}})
+
+{{#if not_final_session}}
+🚫 **DO NOT**:
+- Continue to Session {{next_session}}
+- Create GitHub PR (wait for Session {{total_sessions}})
+- Implement files outside Session {{session_number}} scope
+{{/if}}
+
+{{/if}}
 
 ### Verification Requirements
+{{#if session_mode}}
+- **Session {{session_number}} Verification**: See {{detailed_plan}} {{session_verification_section}} for verification procedures
+- **Completion Checklist**: See {{detailed_plan}} {{session_completion_checklist_section}}
+{{#if is_final_session}}
+- **Comprehensive Verification**: See {{detailed_plan}} {{comprehensive_verification_section}} (all sessions)
+{{/if}}
+{{else}}
 - Run through the verification checklists in {{detailed_plan}} to ensure that you have implemented everything correctly
+{{/if}}
 
 ### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
 
-**Update CLAUDE.md:**
-- [ ] Update "Project Status" section (PRIMARY OWNER for this)
-
 **Update ROADMAP.md:**
 - [ ] Mark completed tasks as `[x]` in the relevant phase section (PRIMARY OWNER)
+{{#if session_mode}}
+- [ ] Update component progress percentage reflecting Session {{session_number}} completion (PRIMARY OWNER)
+{{else}}
 - [ ] Update component progress percentage in "Current Project Status" table (PRIMARY OWNER)
+{{/if}}
 - [ ] Update "Overall Progress" bar if significant milestone reached (PRIMARY OWNER)
 - [ ] Add any new blockers discovered to "Known Blockers" section (PRIMARY OWNER)
 - [ ] Document key decisions in "Implementation Notes" section (PRIMARY OWNER)
 
 **Update @docs/context/current-phase.md:**
+{{#if session_mode}}
+- [ ] Update "Recently Completed" with "Session {{session_number}}: {{session_scope}}" (PRIMARY OWNER)
+{{#if is_final_session}}
+- [ ] Update "Next Steps" with next phase after all sessions complete
+{{else}}
+- [ ] Update "Next Steps" with "Ready to start Session {{next_session}}: {{next_session_scope}}"
+{{/if}}
+{{else}}
 - [ ] Update "Recently Completed" with what was just finished (PRIMARY OWNER)
 - [ ] Update "Next Steps" with what should be done next (if blocked)
+{{/if}}
 - [ ] Update "Last Updated" timestamp
 
 **Update {{detailed_plan}}:**
+{{#if session_mode}}
+- [ ] Mark Session {{session_number}} tasks as `[x]` in {{session_completion_checklist_section}} (PRIMARY OWNER)
+{{else}}
 - [ ] Mark completed tasks as `[x]` in the relevant sections (PRIMARY OWNER)
+{{/if}}
 
 **Update @docs/context/pending-issues.md (if applicable):**
 - [ ] Add any issues discovered during implementation
@@ -89,6 +189,29 @@
 - [ ] Note any integration issues that need resolution
 
 ### Exit Criteria
+{{#if session_mode}}
+{{#if is_final_session}}
+- [ ] All implementation tasks complete (all sessions)
+      ✓ Session 1 through {{total_sessions}} checklists marked [x]
+      ✓ Code written and committed to git branch
+      ✓ GitHub PR created
+- [ ] All verifications pass
+      ✓ Session {{session_number}} verification passes ({{session_verification_section}})
+      ✓ Comprehensive verification passes ({{comprehensive_verification_section}})
+      ✓ Build succeeds without errors
+      ✓ No critical issues blocking merge
+{{else}}
+- [ ] Session {{session_number}} implementation complete
+      ✓ All files from {{session_file_list_section}} created
+      ✓ Session {{session_number}} checklist marked [x] ({{session_completion_checklist_section}})
+      ✓ Code committed to branch ({{git_branch}})
+      ✓ Ready for Session {{next_session}}
+- [ ] Session {{session_number}} verification passes
+      ✓ Verification scripts pass ({{session_verification_section}})
+      ✓ Build succeeds without errors
+      ✓ No critical issues blocking Session {{next_session}}
+{{/if}}
+{{else}}
 - [ ] All implementation tasks complete
       ✓ All checklist items in detailed plan marked [x]
       ✓ Code written and committed to a new git branch
@@ -97,17 +220,98 @@
       ✓ All verification scripts executed successfully
       ✓ Build succeeds without errors
       ✓ No critical issues blocking merge
+{{/if}}
 - [ ] All project tracking updated
       ✓ ROADMAP.md tasks marked complete
       ✓ CLAUDE.md progress updated
       ✓ current-phase.md updated
       ✓ Detailed plan tasks marked [x]
+{{#if session_mode}}
+{{#if is_final_session}}
 - [ ] Ready for next phase
       ✓ PR exists
       ✓ Test and review agents have all required inputs
       ✓ No critical blockers
+{{else}}
+- [ ] Ready for Session {{next_session}}
+      ✓ Session {{session_number}} complete
+      ✓ No blockers for Session {{next_session}}
+      ✓ Branch exists with Session {{session_number}} changes committed
+{{/if}}
+{{else}}
+- [ ] Ready for next phase
+      ✓ PR exists
+      ✓ Test and review agents have all required inputs
+      ✓ No critical blockers
+{{/if}}
 
 ### Completion Signal (Output when done)
+{{#if session_mode}}
+{{#if is_final_session}}
+```markdown
+---
+✅ AGENT COMPLETE: feature-implementer (Session {{session_number}} of {{total_sessions}} - FINAL)
+
+📁 Artifacts Created:
+   - Code in packages/{{component_type}}/
+   - All {{total_sessions}} sessions complete
+   - Git branch: {{git_branch}}
+   - GitHub PR: {{github_pr}}
+
+📋 Context Updates:
+   - ROADMAP.md (marked all session tasks complete, updated progress)
+   - CLAUDE.md (updated Project Status)
+   - current-phase.md (updated Recently Completed, Next Steps)
+   - {{detailed_plan}} (all sessions marked [x])
+
+🎯 Ready For: test-suite-generator AND code-security-reviewer (can run in parallel)
+
+⚠️ Blockers for Next Agent: [None / List specific blockers]
+
+📝 Notes:
+   - All sessions (1-{{total_sessions}}) completed
+   - [Key implementation decisions across all sessions]
+   - [Deviations from plan, if any]
+   - [Issues discovered during implementation]
+---
+```
+{{else}}
+```markdown
+---
+✅ AGENT COMPLETE: feature-implementer (Session {{session_number}} of {{total_sessions}})
+
+📁 Artifacts Created:
+   - Session {{session_number}} files in packages/{{component_type}}/
+   - See {{detailed_plan}} {{session_file_list_section}} for list
+   - Committed to branch: {{git_branch}}
+
+📋 Context Updates:
+   - ROADMAP.md (marked Session {{session_number}} tasks complete)
+   - CLAUDE.md (updated progress to reflect Session {{session_number}})
+   - current-phase.md (Session {{session_number}} complete, ready for Session {{next_session}})
+   - {{detailed_plan}} (Session {{session_number}} checklist marked [x])
+
+🎯 Ready For: Session {{next_session}} implementation
+   - Next session scope: {{next_session_scope}}
+   - Next session files: See {{detailed_plan}} {{next_session_file_list_section}}
+   - Estimated duration: {{next_session_duration}}
+
+⚠️ Blockers for Session {{next_session}}: [None / List specific blockers]
+
+🚫 NOT READY FOR:
+   - test-suite-generator (wait for Session {{total_sessions}})
+   - code-security-reviewer (wait for Session {{total_sessions}})
+   - GitHub PR creation (wait for Session {{total_sessions}})
+
+📝 Notes:
+   - Session {{session_number}} completed successfully
+   - [Key decisions in this session]
+   - [Issues discovered, if any]
+   - ✋ Stopped as instructed (did not continue to Session {{next_session}})
+---
+```
+{{/if}}
+{{else}}
 ```markdown
 ---
 ✅ AGENT COMPLETE: feature-implementer
@@ -133,10 +337,17 @@
    - [Issues discovered during implementation]
 ---
 ```
+{{/if}}
 
 ### References
 - **Coordination guide:** @docs/context/agent-coordination.md (read first!)
 - **Detailed plan:** {{detailed_plan}}
+{{#if session_mode}}
+- **This session implementation:** {{session_implementation_section}}
+- **This session file list:** {{session_file_list_section}}
+- **Session verification:** {{session_verification_section}}
+- **Session checklist:** {{session_completion_checklist_section}}
+{{/if}}
 - **Component specification:** {{specification}}
 - **Architecture:** @docs/specs/auth-optics-architecture.md
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)

@@ -25,18 +25,18 @@
 - Use the navigation guide to find relevant flow/token/security documents
 - Load specific documents based on component needs (flows, tokens, security)
 
-{{#endif requires_oauth_context}}
+{{/if}}
 {{#if requires_keycloak_context}}
 **KeyCloak Integration Context:**
 - @docs/reference/keycloak/keycloak-integration-requirements.md
 
-{{#endif requires_keycloak_context}}
+{{/if}}
 {{#if security_critical}}
 **Security-Critical Context:**
 - @docs/reference/security/oauth2-oidc-threat-model-INDEX.md (comprehensive threat index)
 - Use the index to find relevant attack scenarios and mitigations
 
-{{#endif security_critical}}
+{{/if}}
 **DO NOT Load:**
 - Entire @docs/reference/ directory at once
 - Implementation plans from other components

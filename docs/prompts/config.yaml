@@ -1,29 +1,64 @@
+# yaml-language-server: $schema=./config.schema.json
 # Agent Prompt Configuration
-# This file defines the current component being worked on.
-# Run `./scripts/generate-agent-prompts.sh` after modifying this file to regenerate prompts.
+# Configuration for generating agent prompt files from templates
+#
+# Validation: pnpm validate
 
 # ============================================================================
 # COMPONENT CONFIGURATION
 # ============================================================================
 component:
-  name: "Shared Types Day 2: Configuration & Security Types (Config, Discovery, Security, Vulnerability)"
-  type: "types"  # Options: types | backend | frontend | mock-resource-server
+  name: "Shared Types Day 2: Configuration & Security Types"
+  type: "types"
+
+# ============================================================================
+# SESSION CONFIGURATION
+# ============================================================================
+session:
+  enabled: true
+  current: 1
+  total: 2
+
+  # Session 1 configuration
+  session_1:
+    scope: "Configuration & Discovery Types"
+    duration: "2-4 hours"
+    file_count: 8
+
+    # Section references to detailed plan
+    plan_sections:
+      file_list: "Section 3.1"
+      implementation: "Section 3.1"
+      verification: "Section 4.3"
+      completion_checklist: "Section 6.1"
+
+    # Reference to prerequisite check in plan
+    prerequisites_check_ref: "Section 2.1"
+
+  session_2:
+    scope: "Security & Vulnerability Types"
+    duration: "3-4 hours"
+    file_count: 10
+
+    plan_sections:
+      file_list: "Section 3.2"
+      implementation: "Section 3.2"
+      verification: "Section 4.4"
+      completion_checklist: "Section 6.2"
+      comprehensive_verification: "Section 4.5, Section 6.3"  # Final session only
+
+    prerequisites_check_ref: "Section 2.2"
 
 # ============================================================================
 # FILE PATHS
 # ============================================================================
 paths:
-  # Specifications
   specification: "@docs/specs/auth-optics-shared-types-specification.md"
-
-  # Implementation plans
   master_plan: "@docs/implementation-plans/plan-shared-types-package-2025-12-24.md"
   detailed_plan: "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
-
-  # Output paths
   output_plan: "@docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md"
-  output_review: "@docs/reviews/review-shared-types-day-2-config-security.md"
-  output_test_report: "@docs/test-reports/test-shared-types-day-2-config-security.md"
+  output_review: "@docs/reviews/review-shared-types-day-2.md"
+  output_test_report: "@docs/test-reports/test-shared-types-day-2.md"
 
 # ============================================================================
 # GITHUB REFERENCES
@@ -37,58 +72,16 @@ github:
 # CONTEXT LOADING FLAGS
 # ============================================================================
 context:
-  # Set to true if component implements OAuth2/OIDC flows
   requires_oauth: false
-
-  # Set to true if component integrates with KeyCloak
   requires_keycloak: false
-
-  # Set to true for auth flows, token validation, PKCE, state management
   security_critical: false
 
 # ============================================================================
 # MODEL RECOMMENDATIONS
 # ============================================================================
 models:
-  technical_architect: "sonnet"      # Architecture decisions require complex reasoning
-  feature_implementer_plan: "haiku"  # Creating checklists is straightforward
-  feature_implementer: "sonnet"      # Code writing requires understanding specs
-  test_suite_generator: "haiku"      # Test execution is mostly mechanical
-  code_security_reviewer: "sonnet"   # Security analysis requires deep understanding
-
-# ============================================================================
-# PLAN MODE CONFIGURATION
-# ============================================================================
-plan_mode:
-  # Which sections of master plan to create detailed plan for
-  master_plan_sections: "Day 2 (Section 4.2)"  # Examples: "Sections 1.4-4.2", "Day 2, Sessions 1 - 2"
-
-# ============================================================================
-# EXAMPLES FOR OTHER COMPONENTS
-# ============================================================================
-# Uncomment and modify when starting Backend component:
-#
-# component:
-#   name: "Backend OAuth2 Client"
-#   type: "backend"
-#
-# paths:
-#   specification: "@docs/specs/auth-optics-backend-specification.md"
-#   master_plan: "@docs/implementation-plans/plan-backend-oauth2-2025-12-29.md"
-#   detailed_plan: "@docs/implementation-plans/feature-implementer/backend-oauth2-detailed.md"
-#   output_plan: "@docs/implementation-plans/plan-backend-oauth2-2025-12-29.md"
-#   output_review: "@docs/reviews/review-backend-oauth2-2025-12-29.md"
-#   output_test_report: "@docs/test-reports/test-backend-oauth2-2025-12-29.md"
-#
-# github:
-#   pr: "#X"
-#   issue: "#Y"
-#   branch: "feature/backend-oauth2"
-#
-# context:
-#   requires_oauth: true
-#   requires_keycloak: true
-#   security_critical: true
-#
-# plan_mode:
-#   master_plan_sections: "1-5"
+  technical_architect: "sonnet"
+  feature_implementer_plan: "haiku"
+  feature_implementer: "sonnet"
+  test_suite_generator: "haiku"
+  code_security_reviewer: "sonnet"

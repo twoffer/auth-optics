@@ -10,7 +10,10 @@
     "type-check": "pnpm -r type-check",
     "clean": "pnpm -r clean",
     "lint": "pnpm -r lint",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "validate": "pnpm --filter auth-optics-scripts validate",
+    "validate:all": "pnpm validate && pnpm --filter auth-optics-scripts test",
+    "generate-prompts": "pnpm --filter auth-optics-scripts generate"
   },
   "keywords": ["oauth2", "oidc", "security", "debugging"],
   "author": "",

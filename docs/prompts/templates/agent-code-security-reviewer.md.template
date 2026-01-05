@@ -23,19 +23,19 @@
 - Use the navigation guide to find relevant security/flow/token documents
 - Focus on security requirements for the specific component
 
-{{#endif requires_oauth_context}}
+{{/if}}
 {{#if requires_keycloak_context}}
 **KeyCloak Security Context:**
 - @docs/reference/keycloak/keycloak-security-and-vulnerability-mode.md
 
-{{#endif requires_keycloak_context}}
+{{/if}}
 {{#if security_critical}}
 **Security-Critical Context:**
 - CRITICAL: @docs/reference/security/oauth2-oidc-threat-model-INDEX.md (start here)
 - Use the comprehensive index to find ALL relevant attack scenarios
 - Review attack chains and mitigations for the component's functionality
 
-{{#endif security_critical}}
+{{/if}}
 **DO NOT Load:**
 - Test reports
 - Other components' reviews

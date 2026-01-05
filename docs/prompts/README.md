@@ -105,6 +105,68 @@ testing:
 
 ## Configuration File Reference
 
+### Schema Structure
+
+The configuration file is validated against `config.schema.json`. Key sections:
+
+**component** (required):
+```yaml
+component:
+  name: "Component Name"
+  type: types|service|component|feature|api|ui|integration
+```
+
+**session** (required):
+```yaml
+session:
+  enabled: true
+  current: 1
+  total: 2
+  session_1:
+    scope: "Description"
+    duration: "2-4 hours"  # Pattern: N-N hours
+    file_count: 8
+    plan_sections:
+      file_list: "Section 3.1"
+      implementation: "Section 3.1, Section 3.2"
+      verification: "Section 4.3"
+      completion_checklist: "Section 1.1-4.3"
+    prerequisites_check_ref: "Section 2.1"
+```
+
+**paths** (required):
+```yaml
+paths:
+  specification: "@docs/specs/spec.md"
+  master_plan: "@docs/plans/plan.md"
+  detailed_plan: "@docs/plans/detail.md"
+```
+
+**github** (optional):
+```yaml
+github:
+  pr: "#12"        # Pattern: #N
+  issue: "#10"     # Pattern: #N
+  branch: "feature/name"
+```
+
+**context** (optional):
+```yaml
+context:
+  requires_oauth: false
+  requires_keycloak: false
+  security_critical: false
+```
+
+**models** (required):
+```yaml
+models:
+  feature_implementer: haiku|sonnet|opus  # REQUIRED
+  technical_architect: haiku|sonnet|opus   # Optional
+  test_suite_generator: haiku|sonnet|opus  # Optional
+  code_security_reviewer: haiku|sonnet|opus  # Optional
+```
+
 See `config.yaml` for complete structure and inline documentation.
 
 ## Generated Files
@@ -166,20 +228,46 @@ If you need to:
 
 After modifying templates, always run the generation script to update the prompt files.
 
+## Validation
+
+The configuration is validated using JSON Schema before prompt generation.
+
+### Automatic Validation
+
+**Editor Integration** (real-time feedback):
+- VS Code: Install "YAML" extension by Red Hat
+- Schema is automatically detected via the header comment in `config.yaml`
+- Get autocomplete, inline errors, and hover documentation
+
+**Command-line validation**:
+```bash
+pnpm validate              # Validate default config
+pnpm validate:all          # Validate + run tests
+```
+
+**CI/CD**: Validation runs automatically in GitHub Actions on pull requests.
+
+### Common Validation Errors
+
+**"Additional property X is not allowed"**: Remove the extra field or update the schema
+
+**"Property 'X' is required"**: Add the missing field
+
+**"'value' does not match pattern"**:
+- Durations must be `N-N hours` (not `N hours`)
+- GitHub refs must be `#N` (not `N`)
+
+**"session.current > session.total"**: Ensure current session ≤ total sessions
+
 ## Troubleshooting
-
-### "yq: command not found"
-
-The generation script requires `yq` for YAML parsing.
-
-Install:
-- Ubuntu/Debian: `sudo snap install yq`
-- macOS: `brew install yq`
-- Or download from: https://github.com/mikefarah/yq/releases
 
 ### Generated files look corrupted
 
 Check that templates use UTF-8 encoding and contain valid `{{variable}}` placeholders.
+
+### Validation fails
+
+Run `pnpm validate` to see detailed error messages with location and constraint information.
 
 ### Need to revert to previous configuration
 
@@ -188,7 +276,7 @@ Use git to view previous versions of `config.yaml`:
 ```bash
 git log -p config.yaml
 git checkout <commit> config.yaml
-./scripts/generate-agent-prompts.sh
+pnpm generate-prompts
 ```
 
 ## See Also
