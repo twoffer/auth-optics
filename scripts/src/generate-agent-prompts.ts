@@ -200,31 +200,31 @@ async function main() {
       templateFile: 'agent-technical-architect.md.template',
       outputFile: 'agent-technical-architect.md',
       description: 'technical-architect prompt',
-      modelVar: 'model_technical_architect',
+      modelVar: 'technical_architect',
     },
     {
       templateFile: 'agent-feature-implementer-plan-mode.md.template',
       outputFile: 'agent-feature-implementer-plan-mode.md',
       description: 'feature-implementer-plan-mode prompt',
-      modelVar: 'model_feature_implementer_plan',
+      modelVar: 'feature_implementer_plan',
     },
     {
       templateFile: 'agent-feature-implementer.md.template',
       outputFile: 'agent-feature-implementer.md',
       description: 'feature-implementer prompt',
-      modelVar: 'model_feature_implementer',
+      modelVar: 'feature_implementer',
     },
     {
       templateFile: 'agent-test-suite-generator.md.template',
       outputFile: 'agent-test-suite-generator.md',
       description: 'test-suite-generator prompt',
-      modelVar: 'model_test_suite_generator',
+      modelVar: 'test_suite_generator',
     },
     {
       templateFile: 'agent-code-security-reviewer.md.template',
       outputFile: 'agent-code-security-reviewer.md',
       description: 'code-security-reviewer prompt',
-      modelVar: 'model_code_security_reviewer',
+      modelVar: 'code_security_reviewer',
     },
   ];
 

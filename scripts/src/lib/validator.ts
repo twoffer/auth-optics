@@ -116,9 +116,13 @@ export function validateSessionLogic(config: Config): string[] {
   // Warn about extra session keys
   Object.keys(session).forEach((key) => {
     if (key.startsWith('session_')) {
-      const n = parseInt(key.split('_')[1]);
-      if (!isNaN(n) && n > total) {
-        warnings.push(`session.${key} found but total sessions is ${total}`);
+      const parts = key.split('_');
+      const sessionNum = parts[1];
+      if (sessionNum) {
+        const n = parseInt(sessionNum);
+        if (!isNaN(n) && n > total) {
+          warnings.push(`session.${key} found but total sessions is ${total}`);
+        }
       }
     }
   });
