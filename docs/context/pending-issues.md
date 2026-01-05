@@ -130,12 +130,7 @@ None currently.
    - Improves IDE autocompletion and hints
    - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927282)
 
-6. **Dependency Audit in CI** (`scripts/package.json:19`)
-   - Add `pnpm audit` step to GitHub Actions
-   - Proactive security monitoring for dependencies
-   - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927285)
-
-7. **Snapshot Testing** (Testing suggestion)
+6. **Snapshot Testing** (Testing suggestion)
    - Add snapshot tests for generated prompt files
    - Catch unintended changes in output format
    - See [comprehensive review summary](https://github.com/twoffer/auth-optics/pull/14#issuecomment-2571959516)
@@ -172,7 +167,20 @@ None currently.
 
 ## Resolved Recently
 
-None yet.
+### Dependency Audit in CI (Completed 2026-01-05)
+
+**Description**: Added `pnpm audit` step to GitHub Actions for proactive security monitoring of dependencies.
+
+**Resolution**: Created new top-level CI workflow (`.github/workflows/ci.yml`) with comprehensive checks including security audit, linting, type checking, tests, and build verification.
+
+**Implementation Details**:
+- Security audit job runs `pnpm audit --audit-level=moderate` on all workspace packages
+- Workflow runs on push/PR to main and develop branches
+- Audit failures will block CI and prevent merges
+- Additional jobs for lint, type-check, test, and build provide comprehensive CI coverage
+
+**Source**: PR #14 review - [Inline comment](https://github.com/twoffer/auth-optics/pull/14#discussion_r2659927285)
+**Implemented by**: Claude Code (2026-01-05)
 
 ---
 
