@@ -18,11 +18,15 @@ export * from './tokens';
 // HTTP
 export * from './http';
 
+// Configuration
+export * from './config';
+
+// Discovery
+export * from './discovery';
+
 // Note: The following categories will be implemented in future sessions:
 // - Security (PKCE, state, nonce, security assessment, indicators)
 // - Vulnerability (vulnerability configuration and toggles)
-// - Configuration (client, server, app configuration)
-// - Discovery (OIDC discovery, OAuth metadata, JWKS)
 // - Validation (validation results and errors)
 // - UI (UI state, theme, view modes)
 // - Events (SSE events for flow updates)
