@@ -21,12 +21,12 @@ OAuth2/OIDC debugging and educational tool with real-time flow visualization, de
 
 ## 📊 Current Project Status
 
-**Overall Progress:** `████░░░░░░ 40%` (Specifications Complete, Foundation Types Implemented)
+**Overall Progress:** `█████░░░░░ 50%` (Specifications Complete, Foundation + Config/Discovery Types Implemented)
 
 | Component | Status | Progress | Estimated Completion |
 |-----------|--------|----------|---------------------|
 | **Specifications** | ✅ Complete | 100% | Done |
-| **Shared Types** | 🟡 In Progress | 40% | Week 1, Day 2-3 |
+| **Shared Types** | 🟡 In Progress | 60% | Week 1, Day 2-3 |
 | **Backend** | 🔴 Not Started | 0% | Week 2-3 |
 | **Frontend** | 🔴 Not Started | 0% | Week 2-3 |
 | **Mock Resource Server** | 🔴 Not Started | 0% | Week 3 |
@@ -70,10 +70,10 @@ OAuth2/OIDC debugging and educational tool with real-time flow visualization, de
 - **Purpose:** TypeScript type definitions for all packages
 - **Dependencies:** None (zero dependencies)
 - **Consumers:** backend, frontend, mock-resource-server
-- **Estimated Time:** 4-6 hours (Day 1 complete: 3.5 hours)
-- **Status:** 🟡 40% Complete (Day 1 foundation types implemented)
+- **Estimated Time:** 4-6 hours (Day 1 complete: 3.5 hours, Day 2 Session 1 complete: 2.5 hours)
+- **Status:** 🟡 60% Complete (Day 1 foundation types + Day 2 Session 1 config/discovery types implemented)
 - **Spec:** [auth-optics-shared-types-specification.md](docs/specs/auth-optics-shared-types-specification.md)
-- **Latest PR:** [#11 - Day 1 Foundation Types](https://github.com/twoffer/auth-optics/pull/11)
+- **Latest Commit:** Day 2 Session 1 - Configuration & Discovery Types (commit f728763)
 
 #### 2. **backend** (Core Logic)
 - **Purpose:** OAuth2/OIDC flow orchestration, KeyCloak integration, API
@@ -115,13 +115,15 @@ OAuth2/OIDC debugging and educational tool with real-time flow visualization, de
 
 #### Day 1-2: Shared Types Package (4-6h)
 - [x] Initialize `packages/shared` with TypeScript
-- [ ] Implement core flow types (FlowExecution, FlowStep, FlowStatus)
-- [ ] Implement token types (AccessToken, IDToken, JWT)
-- [ ] Implement HTTP types (HttpRequest, HttpResponse)
-- [ ] Implement security types (PKCE, StateManager, SecurityIndicator)
-- [ ] Implement vulnerability config types (VulnerabilityConfig)
-- [ ] Build and verify type exports
-- [ ] **Exit Criteria:** All packages can import from `@auth-optics/shared`
+- [x] Implement core flow types (FlowExecution, FlowStep, FlowStatus)
+- [x] Implement token types (AccessToken, IDToken, JWT)
+- [x] Implement HTTP types (HttpRequest, HttpResponse)
+- [x] Implement configuration types (ClientConfig, ServerConfig, AppConfig)
+- [x] Implement discovery types (OIDCDiscoveryDocument, OAuth2Metadata, JWKS)
+- [ ] Implement security types (PKCE, StateManager, SecurityIndicator) - Session 2
+- [ ] Implement vulnerability config types (VulnerabilityConfig) - Session 2
+- [x] Build and verify type exports
+- [ ] **Exit Criteria:** All packages can import from `@auth-optics/shared` (60% complete, Session 2 remaining)
 
 **Detailed Tasks:** See Section 15 of [auth-optics-shared-types-specification.md](docs/specs/auth-optics-shared-types-specification.md)
 

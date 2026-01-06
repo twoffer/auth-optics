@@ -900,16 +900,18 @@ rm -f test-day2-imports.ts
 
 ### 6.1 Session 1 Completion (Configuration & Discovery)
 
-- [ ] **src/config/client-config.ts** created and compiles
-- [ ] **src/config/server-config.ts** created and compiles
-- [ ] **src/config/app-config.ts** created and compiles
-- [ ] **src/config/index.ts** barrel export created
-- [ ] **src/discovery/oidc-discovery.ts** created and compiles
-- [ ] **src/discovery/oauth-metadata.ts** created and compiles
-- [ ] **src/discovery/jwks.ts** created and compiles
-- [ ] **src/discovery/index.ts** barrel export created
-- [ ] Package builds successfully: `pnpm build`
-- [ ] No TypeScript errors from config/discovery types
+- [x] **src/config/client-config.ts** created and compiles
+- [x] **src/config/server-config.ts** created and compiles
+- [x] **src/config/app-config.ts** created and compiles
+- [x] **src/config/index.ts** barrel export created
+- [x] **src/discovery/oidc-discovery.ts** created and compiles
+- [x] **src/discovery/oauth-metadata.ts** created and compiles
+- [x] **src/discovery/jwks.ts** created and compiles
+- [x] **src/discovery/index.ts** barrel export created
+- [x] Package builds successfully: `pnpm build`
+- [x] No TypeScript errors from config/discovery types
+- [x] **Updated main src/index.ts** to export config and discovery categories
+- [x] **Committed to branch** feature/shared-types-day-2-config-security (commit f728763)
 
 ### 6.2 Session 2 Completion (Security & Vulnerability)
 
