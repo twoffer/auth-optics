@@ -11,7 +11,7 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run: pnpm generate-prompts
 
-Generated: 2026-01-04 04:20:50 UTC
+Generated: 2026-01-06 22:49:17 UTC
 Component: Shared Types Day 2: Configuration & Security Types
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -19,34 +19,41 @@ Component: Shared Types Day 2: Configuration & Security Types
 
 @agent-feature-implementer
 
-## Task: Implement Shared Types Day 2: Configuration &amp; Security Types - Session 1 of 2
+## Task: Implement Shared Types Day 2: Configuration &amp; Security Types - Session 2 of 2
 
 ### Session Scope
-**This Session**: Configuration &amp; Discovery Types
-**Session Duration**: 2-4 hours
-**Files in This Session**: ~8 files (see detailed plan)
+**This Session**: Security & Vulnerability Types
+**Session Duration**: 3-4 hours
+**Files in This Session**: ~10 files (see detailed plan)
+
+### Prerequisites (CRITICAL - Verify First)
+**Required**: Session 1 must be complete before starting this session
+
+**Verification**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 1, Session 1 completion for prerequisite checks
 
 
 
 ### Requirements
-- **Implementation Scope**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 3.1 for:
-  - Complete file list for Session 1
-  - Implementation instructions for each file
-  - Technical requirements and specifications
+- **Implementation Scope**:
+  - See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 2.2 for:
+    - Complete file list for Session 2
+  - See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 3 - SESSION 2 (Files 9-18) for:
+    - Implementation instructions for each file
+    - Technical requirements and specifications
 - **DO NOT** implement files from other sessions
-- **STOP** after completing Session 1 verification
+- **STOP** after completing Session 2 verification
 - Consult the component specification (@docs/specs/auth-optics-shared-types-specification.md) for context and architectural direction
 - Follow the technical specification exactly
 - Use the OAuth2 RFCs and OIDC specs as the final authorities
-- When finished with Session 1:
-  - Commit changes to existing branch (or create if Session 1)
-  - DO NOT create PR yet (wait for Session 2)
-  - DO NOT continue to Session 2
+- When finished with all implementation and verification tasks:
+  - Commit all pending changes to existing branch (or create branch `feature/shared-types-day-2-config-security` if Session 1)
+  - Push the changes to origin
+  - Create a GitHub PR for this branch
 
 ### Context Loading (See @docs/context/agent-coordination.md)
 **Always Load:**
 - Detailed implementation plan: @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
-  - **Session 1 Focus**: Section 3.1
+  - **Session 2 Focus**: Section 3 - SESSION 2 (Files 9-18)
 - Component specification: @docs/specs/auth-optics-shared-types-specification.md
 - @docs/context/current-phase.md
 
@@ -56,60 +63,55 @@ Component: Shared Types Day 2: Configuration & Security Types
 
 ### Scope Guards (See @docs/context/agent-coordination.md for details)
 **DO:**
-- **Read @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 3.1** to see exactly which files to implement
-- Implement ONLY the files listed in Session 1
-- Mark Session 1 tasks complete as you finish them
+- **Read @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 2.2** to see exactly which files to implement
+- Implement ONLY the files listed in Session 2
+- Mark Session 2 tasks complete as you finish them
 - Document implementation decisions in ROADMAP.md "Implementation Notes"
 - Update progress tracking
 
 **DO NOT:**
-- Implement files from Session 2 or later sessions
-- Continue past Session 1 completion
-- Skip Session 1 verification steps
+- Skip Session 2 verification steps
 - Refactor code outside the component scope
 - Modify specification documents (flag discrepancies in pending-issues.md)
 - Change architectural decisions (escalate to user)
 
-### Session 1 Implementation Scope
+### Session 2 Implementation Scope
 
-**File List**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 3.1
+**File List**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 2.2
 
-**Implementation Instructions**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 3.1
+**Implementation Instructions**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 3 - SESSION 2 (Files 9-18)
 
-**Total Files**: ~8 files
+**Total Files**: ~10 files
 
 ### STOP Condition (CRITICAL)
 ✋ **STOP after completing**:
-- [ ] All files from Section 3.1 created
-- [ ] Session 1 verification passes (see Section 4.3)
-- [ ] Session 1 completion checklist done (see Section 6.1)
+- [ ] All files from Section 2.2 created
+- [ ] Session 2 verification passes (see Section 4.1, Section 4.2, Section 4.4)
+- [ ] Session 2 completion checklist done (see Section 6.2)
 
-🚫 **DO NOT**:
-- Continue to Session 2
-- Create GitHub PR (wait for Session 2)
-- Implement files outside Session 1 scope
 
 
 ### Verification Requirements
-- **Session 1 Verification**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 4.3 for verification procedures
-- **Completion Checklist**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 6.1
+- **Session 2 Verification**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 4.1, Section 4.2, Section 4.4 for verification procedures
+- **Completion Checklist**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 6.2
+- **Comprehensive Verification**: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 4.5, Section 6.3 (all sessions)
 
 ### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
 
 **Update ROADMAP.md:**
 - [ ] Mark completed tasks as `[x]` in the relevant phase section (PRIMARY OWNER)
-- [ ] Update component progress percentage reflecting Session 1 completion (PRIMARY OWNER)
+- [ ] Update component progress percentage reflecting Session 2 completion (PRIMARY OWNER)
 - [ ] Update "Overall Progress" bar if significant milestone reached (PRIMARY OWNER)
 - [ ] Add any new blockers discovered to "Known Blockers" section (PRIMARY OWNER)
 - [ ] Document key decisions in "Implementation Notes" section (PRIMARY OWNER)
 
 **Update @docs/context/current-phase.md:**
-- [ ] Update "Recently Completed" with "Session 1: Configuration &amp; Discovery Types" (PRIMARY OWNER)
-- [ ] Update "Next Steps" with "Ready to start Session 2: Security &amp; Vulnerability Types"
+- [ ] Update "Recently Completed" with "Session 2: Security & Vulnerability Types" (PRIMARY OWNER)
+- [ ] Update "Next Steps" with next phase after all sessions complete
 - [ ] Update "Last Updated" timestamp
 
 **Update @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md:**
-- [ ] Mark Session 1 tasks as `[x]` in Section 6.1 (PRIMARY OWNER)
+- [ ] Mark Session 2 tasks as `[x]` in Section 6.2 (PRIMARY OWNER)
 
 **Update @docs/context/pending-issues.md (if applicable):**
 - [ ] Add any issues discovered during implementation
@@ -122,68 +124,61 @@ Component: Shared Types Day 2: Configuration & Security Types
 - [ ] Note any integration issues that need resolution
 
 ### Exit Criteria
-- [ ] Session 1 implementation complete
-      ✓ All files from Section 3.1 created
-      ✓ Session 1 checklist marked [x] (Section 6.1)
-      ✓ Code committed to branch (feature/shared-types-day-2-config-security)
-      ✓ Ready for Session 2
-- [ ] Session 1 verification passes
-      ✓ Verification scripts pass (Section 4.3)
+- [ ] All implementation tasks complete (all sessions)
+      ✓ Session 1 through 2 checklists marked [x]
+      ✓ Code written and committed to git branch
+      ✓ GitHub PR created
+- [ ] All verifications pass
+      ✓ Session 2 verification passes (Section 4.1, Section 4.2, Section 4.4)
+      ✓ Comprehensive verification passes (Section 4.5, Section 6.3)
       ✓ Build succeeds without errors
-      ✓ No critical issues blocking Session 2
+      ✓ No critical issues blocking merge
 - [ ] All project tracking updated
       ✓ ROADMAP.md tasks marked complete
       ✓ CLAUDE.md progress updated
       ✓ current-phase.md updated
       ✓ Detailed plan tasks marked [x]
-- [ ] Ready for Session 2
-      ✓ Session 1 complete
-      ✓ No blockers for Session 2
-      ✓ Branch exists with Session 1 changes committed
+- [ ] Ready for next phase
+      ✓ PR exists
+      ✓ Test and review agents have all required inputs
+      ✓ No critical blockers
 
 ### Completion Signal (Output when done)
 ```markdown
 ---
-✅ AGENT COMPLETE: feature-implementer (Session 1 of 2)
+✅ AGENT COMPLETE: feature-implementer (Session 2 of 2 - FINAL)
 
 📁 Artifacts Created:
-   - Session 1 files in packages/types/
-   - See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 3.1 for list
-   - Committed to branch: feature/shared-types-day-2-config-security
+   - Code in packages/types/
+   - All 2 sessions complete
+   - Git branch: feature/shared-types-day-2-config-security
+   - GitHub PR: #12
 
 📋 Context Updates:
-   - ROADMAP.md (marked Session 1 tasks complete)
-   - CLAUDE.md (updated progress to reflect Session 1)
-   - current-phase.md (Session 1 complete, ready for Session 2)
-   - @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md (Session 1 checklist marked [x])
+   - ROADMAP.md (marked all session tasks complete, updated progress)
+   - CLAUDE.md (updated Project Status)
+   - current-phase.md (updated Recently Completed, Next Steps)
+   - @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md (all sessions marked [x])
 
-🎯 Ready For: Session 2 implementation
-   - Next session scope: Security &amp; Vulnerability Types
-   - Next session files: See @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md Section 3.2
-   - Estimated duration: 3-4 hours
+🎯 Ready For: test-suite-generator AND code-security-reviewer (can run in parallel)
 
-⚠️ Blockers for Session 2: [None / List specific blockers]
-
-🚫 NOT READY FOR:
-   - test-suite-generator (wait for Session 2)
-   - code-security-reviewer (wait for Session 2)
-   - GitHub PR creation (wait for Session 2)
+⚠️ Blockers for Next Agent: [None / List specific blockers]
 
 📝 Notes:
-   - Session 1 completed successfully
-   - [Key decisions in this session]
-   - [Issues discovered, if any]
-   - ✋ Stopped as instructed (did not continue to Session 2)
+   - All sessions (1-2) completed
+   - [Key implementation decisions across all sessions]
+   - [Deviations from plan, if any]
+   - [Issues discovered during implementation]
 ---
 ```
 
 ### References
 - **Coordination guide:** @docs/context/agent-coordination.md (read first!)
 - **Detailed plan:** @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
-- **This session implementation:** Section 3.1
-- **This session file list:** Section 3.1
-- **Session verification:** Section 4.3
-- **Session checklist:** Section 6.1
+- **This session implementation:** Section 3 - SESSION 2 (Files 9-18)
+- **This session file list:** Section 2.2
+- **Session verification:** Section 4.1, Section 4.2, Section 4.4
+- **Session checklist:** Section 6.2
 - **Component specification:** @docs/specs/auth-optics-shared-types-specification.md
 - **Architecture:** @docs/specs/auth-optics-architecture.md
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)

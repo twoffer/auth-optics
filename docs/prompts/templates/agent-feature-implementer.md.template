@@ -4,7 +4,7 @@
 ## Task: Implement {{component_name}} - Session {{session_number}} of {{total_sessions}}
 
 ### Session Scope
-**This Session**: {{session_scope}}
+**This Session**: {{{session_scope}}}
 **Session Duration**: {{session_duration}}
 **Files in This Session**: ~{{session_file_count}} files (see detailed plan)
 
@@ -22,10 +22,12 @@
 
 ### Requirements
 {{#if session_mode}}
-- **Implementation Scope**: See {{detailed_plan}} {{session_implementation_section}} for:
-  - Complete file list for Session {{session_number}}
-  - Implementation instructions for each file
-  - Technical requirements and specifications
+- **Implementation Scope**:
+  - See {{detailed_plan}} {{session_file_list_section}} for:
+    - Complete file list for Session {{session_number}}
+  - See {{detailed_plan}} {{session_implementation_section}} for:
+    - Implementation instructions for each file
+    - Technical requirements and specifications
 - **DO NOT** implement files from other sessions
 - **STOP** after completing Session {{session_number}} verification
 {{else}}
@@ -37,12 +39,12 @@
 {{#if session_mode}}
 {{#if is_final_session}}
 - When finished with all implementation and verification tasks:
-  - Commit all pending changes to existing branch (or create if Session 1)
+  - Commit all pending changes to existing branch (or create branch `{{git_branch}}` if Session 1)
   - Push the changes to origin
   - Create a GitHub PR for this branch
 {{else}}
 - When finished with Session {{session_number}}:
-  - Commit changes to existing branch (or create if Session 1)
+  - Commit changes to existing branch (or create branch `{{git_branch}}` if Session 1)
   - DO NOT create PR yet (wait for Session {{total_sessions}})
   - DO NOT continue to Session {{next_session}}
 {{/if}}
@@ -98,8 +100,10 @@
 
 **DO NOT:**
 {{#if session_mode}}
+{{#if not_final_session}}
 - Implement files from Session {{next_session}} or later sessions
 - Continue past Session {{session_number}} completion
+{{/if}}
 - Skip Session {{session_number}} verification steps
 {{else}}
 - Implement features beyond the detailed plan (no scope creep)
@@ -159,11 +163,11 @@
 
 **Update @docs/context/current-phase.md:**
 {{#if session_mode}}
-- [ ] Update "Recently Completed" with "Session {{session_number}}: {{session_scope}}" (PRIMARY OWNER)
+- [ ] Update "Recently Completed" with "Session {{session_number}}: {{{session_scope}}}" (PRIMARY OWNER)
 {{#if is_final_session}}
 - [ ] Update "Next Steps" with next phase after all sessions complete
 {{else}}
-- [ ] Update "Next Steps" with "Ready to start Session {{next_session}}: {{next_session_scope}}"
+- [ ] Update "Next Steps" with "Ready to start Session {{next_session}}: {{{next_session_scope}}}"
 {{/if}}
 {{else}}
 - [ ] Update "Recently Completed" with what was just finished (PRIMARY OWNER)
@@ -292,7 +296,7 @@
    - {{detailed_plan}} (Session {{session_number}} checklist marked [x])
 
 🎯 Ready For: Session {{next_session}} implementation
-   - Next session scope: {{next_session_scope}}
+   - Next session scope: {{{next_session_scope}}}
    - Next session files: See {{detailed_plan}} {{next_session_file_list_section}}
    - Estimated duration: {{next_session_duration}}
 

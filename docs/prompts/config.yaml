@@ -16,7 +16,7 @@ component:
 # ============================================================================
 session:
   enabled: true
-  current: 1
+  current: 2
   total: 2
 
   # Session 1 configuration
@@ -27,13 +27,13 @@ session:
 
     # Section references to detailed plan
     plan_sections:
-      file_list: "Section 3.1"
-      implementation: "Section 3.1"
+      file_list: "Section 2.1"
+      implementation: "Section 3 - SESSION 1 (Files 1-8)"
       verification: "Section 4.3"
       completion_checklist: "Section 6.1"
 
     # Reference to prerequisite check in plan
-    prerequisites_check_ref: "Section 2.1"
+    prerequisites_check_ref: "Section 1 (Prerequisites & Setup)"
 
   session_2:
     scope: "Security & Vulnerability Types"
@@ -41,13 +41,13 @@ session:
     file_count: 10
 
     plan_sections:
-      file_list: "Section 3.2"
-      implementation: "Section 3.2"
-      verification: "Section 4.4"
+      file_list: "Section 2.2"
+      implementation: "Section 3 - SESSION 2 (Files 9-18)"
+      verification: "Section 4.1, Section 4.2, Section 4.4"
       completion_checklist: "Section 6.2"
       comprehensive_verification: "Section 4.5, Section 6.3"  # Final session only
 
-    prerequisites_check_ref: "Section 2.2"
+    prerequisites_check_ref: "Section 1, Session 1 completion"
 
 # ============================================================================
 # FILE PATHS
