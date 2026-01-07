@@ -11,7 +11,7 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run: pnpm generate-prompts
 
-Generated: 2026-01-07 12:50:13 UTC
+Generated: 2026-01-07 17:31:02 UTC
 Component: Shared Types Day 2: Configuration & Security Types
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -23,10 +23,10 @@ Component: Shared Types Day 2: Configuration & Security Types
 
 ### Requirements
 - Review the functionality in GitHub PR #16 (git branch feature/shared-types-day-2-config-security) and evaluate whether it satisfies the following:
-  * The design in @docs/specs/auth-optics-shared-types-specification.md
-  * The specific implementation plan in @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
-  * OAuth2/OIDC standards according to the reference specification documentation
-  * Standards and best practices for TypeScript, React, Node.js, Vite, Tailwind CSS, Radix UI, and any other technologies used
+  - The design in @docs/specs/auth-optics-shared-types-specification.md
+  - The specific implementation plan in @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
+  - OAuth2/OIDC standards according to the reference specification documentation
+  - Standards and best practices for TypeScript, React, Node.js, Vite, Tailwind CSS, Radix UI, and any other technologies used
 - Always use the reference specification documents and the official OAuth2/OIDC RFCs/specs to determine what the expected behavior should be
 
 ### Context Loading (See @docs/context/agent-coordination.md)
@@ -56,7 +56,10 @@ Component: Shared Types Day 2: Configuration & Security Types
 
 ### Documentation Requirements
 - Write the review results to @docs/reviews/review-shared-types-day-2.md
-- Create the review results document according to the guidelines in @docs/reviews/README.md
+  - Use the guidelines in @docs/reviews/README.md
+- Add a review summary to PR #16
+  - Add one top-level comment summarizing the review and linking to the detailed review document
+  - All specific issues, code references, and recommendations are documented in the review file
 
 ### Verification Requirements
 - The code in GitHub PR #16, if it included all suggested fixes and improvements, would meet or exceed OAuth2/OIDC, security, and coding standards
@@ -70,8 +73,13 @@ Component: Shared Types Day 2: Configuration & Security Types
 - [ ] Add links to review report
 
 **Update @docs/context/pending-issues.md (if issues found):**
-- [ ] Add any issues discovered during the review (PRIMARY OWNER for review issues)
-- [ ] Categorize issues by priority (Critical/High/Medium/Low)
+- [ ] Add ALL issues discovered during the review, regardless of priority (PRIMARY OWNER for review issues)
+- [ ] Include Critical, High, Medium, AND Low priority issues
+- [ ] Place each issue in the appropriate priority section:
+  - Critical issues → "Critical Issues (Block Progress)"
+  - High priority → "High Priority"
+  - Medium priority → "Medium Priority"
+  - Low priority → "Low Priority / Nice to Have"
 - [ ] Include file paths where issues were found
 - [ ] Link to review document for details
 
@@ -89,6 +97,7 @@ Component: Shared Types Day 2: Configuration & Security Types
       ✓ Review report exists at @docs/reviews/review-shared-types-day-2.md
       ✓ Issues categorized by severity
       ✓ Recommendations actionable
+      ✓ Review summary comment added to PR #16
 - [ ] All project tracking updated
       ✓ current-phase.md updated
       ✓ pending-issues.md updated (if issues found)
