@@ -1,6 +1,6 @@
 # Pending Issues
 
-**Last Updated**: 2026-01-04 (Updated: Added PR #14 code review findings - 2 medium priority, 7 low priority enhancements)
+**Last Updated**: 2026-01-07 (Updated: Added PR #16 code review findings - 1 medium priority, 2 low priority enhancements)
 
 **Test Status**: Day 1 Foundation Types - All tests PASSED (249/249 Priority 1)
 - Infrastructure tests: 30/30 passed
@@ -26,6 +26,19 @@ None currently.
 None currently.
 
 ## Medium Priority
+
+### PR #16: Missing OAuth2 Error Response Types
+
+**Description**: While token and flow types are comprehensive, there are no dedicated types for OAuth2 error responses per RFC 6749 Section 5.2.
+
+**Impact**: Medium (error handling completeness)
+**Location**: Implementation-wide (no specific file - types don't exist yet)
+**Source**: PR #16 review - @docs/reviews/review-shared-types-day-2.md Issue #1
+**Recommendation**: Add OAuth2ErrorResponse interface with proper error codes, error_description, error_uri, and state fields
+**RFC Reference**: RFC 6749 Section 5.2 - Error Response, Section 4.1.2.1 - Authorization Error Response
+**Priority**: Medium
+**Status**: Identified, not yet implemented
+**Assignee**: feature-implementer agent (optional enhancement, can be addressed in follow-up PR)
 
 ### PR #14 Enhancement: GitHub Actions Error Handling
 
@@ -164,6 +177,48 @@ None currently.
 **Requires**: feature-implementer agent
 **Deferred to**: Phase 2 (when implementing token handling in frontend/backend)
 **Note**: Consider creating separate `@auth-optics/shared-utils` package for consumer-facing utilities
+
+### PR #16: PKCE Verifier Length Validation Constants
+
+**Description**: The type comments in `pkce.ts` mention that code verifiers "MUST be 43-128 characters long" but there are no exported constants for these RFC-specified limits.
+
+**Impact**: Low (code maintainability)
+**Location**: `packages/shared/src/security/pkce.ts:45-46`
+**Source**: PR #16 review - @docs/reviews/review-shared-types-day-2.md Issue #2
+
+**Recommendation**: Add exported constants for better maintainability:
+```typescript
+export const PKCE_CONSTRAINTS = {
+  MIN_VERIFIER_LENGTH: 43,
+  MAX_VERIFIER_LENGTH: 128,
+  VERIFIER_CHARSET_REGEX: /^[A-Za-z0-9\-._~]+$/,
+} as const;
+```
+
+**Benefit**: Backend services can use these constants for validation, ensuring consistency with RFC 7636 Section 4.1 specification.
+
+**RFC Reference**: RFC 7636 Section 4.1
+**Priority**: Low
+**Status**: Identified, not yet implemented
+
+### PR #16: State Parameter Expiration Default
+
+**Description**: Current default state parameter expiration is 600 seconds (10 minutes). OAuth 2.0 Security BCP recommends shorter lifetimes for state parameters to reduce the attack window.
+
+**Impact**: Low (security hardening)
+**Location**: `packages/shared/src/security/state.ts:202-206`
+**Source**: PR #16 review - @docs/reviews/review-shared-types-day-2.md Issue #3
+
+**Current Default**: 600 seconds (10 minutes)
+**Suggested Default**: 300 seconds (5 minutes)
+
+**Rationale**: Security BCP Section 4.7 recommends limiting state lifetime. 5 minutes is sufficient for user interaction while reducing the window for CSRF attacks.
+
+**Note**: This is truly optional - 10 minutes is still secure and may provide better UX for slower users. Consider user experience when implementing.
+
+**RFC Reference**: RFC 6749 Section 10.12, OAuth 2.0 Security BCP Section 4.7
+**Priority**: Low
+**Status**: Identified, not yet implemented
 
 ## Resolved Recently
 

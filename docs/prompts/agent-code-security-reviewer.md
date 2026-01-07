@@ -11,7 +11,7 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run: pnpm generate-prompts
 
-Generated: 2026-01-04 04:20:50 UTC
+Generated: 2026-01-07 17:31:02 UTC
 Component: Shared Types Day 2: Configuration & Security Types
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -22,18 +22,18 @@ Component: Shared Types Day 2: Configuration & Security Types
 ## Task: Review the implementation of Shared Types Day 2: Configuration &amp; Security Types
 
 ### Requirements
-- Review the functionality in GitHub PR #12 (git branch feature/shared-types-day-2-config-security) and evaluate whether it satisfies the following:
-  * The design in @docs/specs/auth-optics-shared-types-specification.md
-  * The specific implementation plan in @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
-  * OAuth2/OIDC standards according to the reference specification documentation
-  * Standards and best practices for TypeScript, React, Node.js, Vite, Tailwind CSS, Radix UI, and any other technologies used
+- Review the functionality in GitHub PR #16 (git branch feature/shared-types-day-2-config-security) and evaluate whether it satisfies the following:
+  - The design in @docs/specs/auth-optics-shared-types-specification.md
+  - The specific implementation plan in @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
+  - OAuth2/OIDC standards according to the reference specification documentation
+  - Standards and best practices for TypeScript, React, Node.js, Vite, Tailwind CSS, Radix UI, and any other technologies used
 - Always use the reference specification documents and the official OAuth2/OIDC RFCs/specs to determine what the expected behavior should be
 
 ### Context Loading (See @docs/context/agent-coordination.md)
 **Always Load:**
 - Component specification: @docs/specs/auth-optics-shared-types-specification.md
 - Detailed implementation plan: @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
-- GitHub PR diff (if available): #12
+- GitHub PR diff (if available): #16
 - @docs/reference/security/security-best-current-practice.md (all parts)
 
 **DO NOT Load:**
@@ -56,10 +56,13 @@ Component: Shared Types Day 2: Configuration & Security Types
 
 ### Documentation Requirements
 - Write the review results to @docs/reviews/review-shared-types-day-2.md
-- Create the review results document according to the guidelines in @docs/reviews/README.md
+  - Use the guidelines in @docs/reviews/README.md
+- Add a review summary to PR #16
+  - Add one top-level comment summarizing the review and linking to the detailed review document
+  - All specific issues, code references, and recommendations are documented in the review file
 
 ### Verification Requirements
-- The code in GitHub PR #12, if it included all suggested fixes and improvements, would meet or exceed OAuth2/OIDC, security, and coding standards
+- The code in GitHub PR #16, if it included all suggested fixes and improvements, would meet or exceed OAuth2/OIDC, security, and coding standards
 
 ### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
 
@@ -70,8 +73,13 @@ Component: Shared Types Day 2: Configuration & Security Types
 - [ ] Add links to review report
 
 **Update @docs/context/pending-issues.md (if issues found):**
-- [ ] Add any issues discovered during the review (PRIMARY OWNER for review issues)
-- [ ] Categorize issues by priority (Critical/High/Medium/Low)
+- [ ] Add ALL issues discovered during the review, regardless of priority (PRIMARY OWNER for review issues)
+- [ ] Include Critical, High, Medium, AND Low priority issues
+- [ ] Place each issue in the appropriate priority section:
+  - Critical issues → "Critical Issues (Block Progress)"
+  - High priority → "High Priority"
+  - Medium priority → "Medium Priority"
+  - Low priority → "Low Priority / Nice to Have"
 - [ ] Include file paths where issues were found
 - [ ] Link to review document for details
 
@@ -89,6 +97,7 @@ Component: Shared Types Day 2: Configuration & Security Types
       ✓ Review report exists at @docs/reviews/review-shared-types-day-2.md
       ✓ Issues categorized by severity
       ✓ Recommendations actionable
+      ✓ Review summary comment added to PR #16
 - [ ] All project tracking updated
       ✓ current-phase.md updated
       ✓ pending-issues.md updated (if issues found)
@@ -128,5 +137,5 @@ Component: Shared Types Day 2: Configuration & Security Types
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)
 - **Project roadmap:** @ROADMAP.md
 - **Current context:** @docs/context/current-phase.md
-- **GitHub PR:** #12
-- **Related GitHub Issue:** #10
+- **GitHub PR:** #16
+- **Related GitHub Issue:** #13

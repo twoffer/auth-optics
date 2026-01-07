@@ -11,7 +11,7 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run: pnpm generate-prompts
 
-Generated: 2026-01-04 04:20:50 UTC
+Generated: 2026-01-07 17:31:02 UTC
 Component: Shared Types Day 2: Configuration & Security Types
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -22,11 +22,11 @@ Component: Shared Types Day 2: Configuration & Security Types
 ## Task: Test the implementation of Shared Types Day 2: Configuration &amp; Security Types
 
 **Detailed Plan:** @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
-**GitHub PR:** #12
+**GitHub PR:** #16
 **Git Branch:** feature/shared-types-day-2-config-security
 
 ### Requirements
-- Validate the implementation in GitHub PR #12 (branch feature/shared-types-day-2-config-security) according to:
+- Validate the implementation in GitHub PR #16 (branch feature/shared-types-day-2-config-security) according to:
   * The Test Plan in the PR
   * The verification checklist in @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
   * Any other criteria relevant to these changes
@@ -38,7 +38,7 @@ Component: Shared Types Day 2: Configuration & Security Types
 **Always Load:**
 - Detailed implementation plan: @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
 - Component specification: @docs/specs/auth-optics-shared-types-specification.md
-- GitHub PR diff (if available): #12
+- GitHub PR diff (if available): #16
 
 **DO NOT Load:**
 - Implementation plans (only use verification checklists)
@@ -163,5 +163,5 @@ Choose the appropriate test type(s) based on what you're testing:
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)
 - **Project roadmap:** @ROADMAP.md
 - **Current context:** @docs/context/current-phase.md
-- **GitHub PR:** #12
-- **Related GitHub Issue:** #10
+- **GitHub PR:** #16
+- **Related GitHub Issue:** #13
