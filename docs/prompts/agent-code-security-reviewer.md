@@ -11,7 +11,7 @@ To modify this prompt:
   1. Edit docs/prompts/config.yaml
   2. Run: pnpm generate-prompts
 
-Generated: 2026-01-06 22:49:17 UTC
+Generated: 2026-01-07 12:50:13 UTC
 Component: Shared Types Day 2: Configuration & Security Types
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -22,7 +22,7 @@ Component: Shared Types Day 2: Configuration & Security Types
 ## Task: Review the implementation of Shared Types Day 2: Configuration &amp; Security Types
 
 ### Requirements
-- Review the functionality in GitHub PR #12 (git branch feature/shared-types-day-2-config-security) and evaluate whether it satisfies the following:
+- Review the functionality in GitHub PR #16 (git branch feature/shared-types-day-2-config-security) and evaluate whether it satisfies the following:
   * The design in @docs/specs/auth-optics-shared-types-specification.md
   * The specific implementation plan in @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
   * OAuth2/OIDC standards according to the reference specification documentation
@@ -33,7 +33,7 @@ Component: Shared Types Day 2: Configuration & Security Types
 **Always Load:**
 - Component specification: @docs/specs/auth-optics-shared-types-specification.md
 - Detailed implementation plan: @docs/implementation-plans/feature-implementer/shared-types-day-2-config-security.md
-- GitHub PR diff (if available): #12
+- GitHub PR diff (if available): #16
 - @docs/reference/security/security-best-current-practice.md (all parts)
 
 **DO NOT Load:**
@@ -59,7 +59,7 @@ Component: Shared Types Day 2: Configuration & Security Types
 - Create the review results document according to the guidelines in @docs/reviews/README.md
 
 ### Verification Requirements
-- The code in GitHub PR #12, if it included all suggested fixes and improvements, would meet or exceed OAuth2/OIDC, security, and coding standards
+- The code in GitHub PR #16, if it included all suggested fixes and improvements, would meet or exceed OAuth2/OIDC, security, and coding standards
 
 ### Project Tracking Requirements (See @docs/context/agent-coordination.md for ownership)
 
@@ -128,5 +128,5 @@ Component: Shared Types Day 2: Configuration & Security Types
 - **OAuth2/OIDC reference:** @docs/reference/ (load selectively per context rules)
 - **Project roadmap:** @ROADMAP.md
 - **Current context:** @docs/context/current-phase.md
-- **GitHub PR:** #12
-- **Related GitHub Issue:** #10
+- **GitHub PR:** #16
+- **Related GitHub Issue:** #13
