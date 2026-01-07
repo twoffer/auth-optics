@@ -24,9 +24,13 @@ export * from './config';
 // Discovery
 export * from './discovery';
 
+// Security
+export * from './security';
+
+// Vulnerability
+export * from './vulnerability';
+
 // Note: The following categories will be implemented in future sessions:
-// - Security (PKCE, state, nonce, security assessment, indicators)
-// - Vulnerability (vulnerability configuration and toggles)
 // - Validation (validation results and errors)
 // - UI (UI state, theme, view modes)
 // - Events (SSE events for flow updates)
